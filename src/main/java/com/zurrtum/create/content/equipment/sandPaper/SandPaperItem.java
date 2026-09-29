@@ -1,5 +1,6 @@
 package com.zurrtum.create.content.equipment.sandPaper;
 
+import com.zurrtum.create.foundation.utility.InventoryCompat;
 import com.zurrtum.create.AllDataComponents;
 import com.zurrtum.create.AllRecipeSets;
 import com.zurrtum.create.AllRecipeTypes;
@@ -146,11 +147,11 @@ public class SandPaperItem extends Item {
                 ItemStack polished = recipe.value().assemble(input);
                 Inventory playerInv = player.getInventory();
                 if (!polished.isEmpty()) {
-                    playerInv.placeItemBackInInventory(polished);
+                    InventoryCompat.placeItemBack(playerInv, polished);
                 }
                 ItemStackTemplate recipeRemainder = toPolish.getItem().getCraftingRemainder();
                 if (recipeRemainder != null) {
-                    playerInv.placeItemBackInInventory(recipeRemainder.create());
+                    InventoryCompat.placeItemBack(playerInv, recipeRemainder.create());
                 }
             });
 
@@ -182,7 +183,7 @@ public class SandPaperItem extends Item {
         if (stack.has(AllDataComponents.SAND_PAPER_POLISHING)) {
             ItemStack toPolish = stack.get(AllDataComponents.SAND_PAPER_POLISHING).item();
             //noinspection DataFlowIssue - toPolish won't be null as we do call .has before calling .get
-            player.getInventory().placeItemBackInInventory(toPolish);
+            InventoryCompat.placeItemBack(player.getInventory(), toPolish);
             stack.remove(AllDataComponents.SAND_PAPER_POLISHING);
         }
         return false;

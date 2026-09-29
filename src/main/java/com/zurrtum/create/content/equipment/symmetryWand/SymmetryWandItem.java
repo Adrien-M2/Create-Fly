@@ -1,5 +1,6 @@
 package com.zurrtum.create.content.equipment.symmetryWand;
 
+import com.zurrtum.create.foundation.utility.InventoryCompat;
 import com.zurrtum.create.AllBlocks;
 import com.zurrtum.create.AllClientHandle;
 import com.zurrtum.create.AllDataComponents;
@@ -281,7 +282,7 @@ public class SymmetryWandItem extends Item {
                 } else if (count != 0) {
                     targets.add(position);
                     tasks.forEach(Runnable::run);
-                    player.getInventory().placeItemBackInInventory(placementContext.getItemInHand());
+                    InventoryCompat.placeItemBack(player.getInventory(), placementContext.getItemInHand());
                 }
             }
         }

@@ -1,5 +1,6 @@
 package com.zurrtum.create;
 
+import com.zurrtum.create.foundation.utility.InventoryCompat;
 import com.zurrtum.create.api.behaviour.BlockEntityBehaviour;
 import com.zurrtum.create.api.behaviour.display.DisplaySource;
 import com.zurrtum.create.catnip.math.AngleHelper;
@@ -650,8 +651,7 @@ public class AllHandle {
                         if (!player.isCreative()) {
                             int chainCost = ChainConveyorBlockEntity.getChainCost(targetPos.subtract(packet.pos()));
                             while (chainCost > 0) {
-                                player.getInventory()
-                                    .placeItemBackInInventory(new ItemStack(Items.IRON_CHAIN, Math.min(chainCost, 64)));
+                                InventoryCompat.placeItemBack(player.getInventory(), new ItemStack(Items.IRON_CHAIN, Math.min(chainCost, 64)));
                                 chainCost -= 64;
                             }
                         }
@@ -743,7 +743,7 @@ public class AllHandle {
                         if (player.getMainHandItem().isEmpty()) {
                             player.setItemInHand(InteractionHand.MAIN_HAND, best.item.copy());
                         } else {
-                            player.getInventory().placeItemBackInInventory(best.item.copy());
+                            InventoryCompat.placeItemBack(player.getInventory(), best.item.copy());
                         }
 
                         list.remove(best);
@@ -945,7 +945,7 @@ public class AllHandle {
                 if (blockEntity instanceof StockTickerBlockEntity be) {
                     ItemStack filter = packet.filter();
                     if (!filter.isEmpty() && filter.getItem() instanceof FilterItem) {
-                        listener.player.getInventory().placeItemBackInInventory(filter);
+                        InventoryCompat.placeItemBack(listener.player.getInventory(), filter);
                     }
                     return true;
                 }

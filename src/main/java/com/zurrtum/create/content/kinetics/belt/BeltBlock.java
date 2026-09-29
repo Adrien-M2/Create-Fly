@@ -1,5 +1,6 @@
 package com.zurrtum.create.content.kinetics.belt;
 
+import com.zurrtum.create.foundation.utility.InventoryCompat;
 import com.zurrtum.create.AllBlockEntityTypes;
 import com.zurrtum.create.AllBlocks;
 import com.zurrtum.create.AllItemTags;
@@ -316,7 +317,7 @@ public class BeltBlock extends HorizontalKineticBlock implements IBE<BeltBlockEn
             MutableBoolean success = new MutableBoolean(false);
             controllerBelt.getInventory().applyToEachWithin(
                 belt.index + 0.5f, 0.55f, transportedItemStack -> {
-                    player.getInventory().placeItemBackInInventory(transportedItemStack.stack);
+                    InventoryCompat.placeItemBack(player.getInventory(), transportedItemStack.stack);
                     success.setTrue();
                     return TransportedResult.removeItem();
                 }
@@ -404,7 +405,7 @@ public class BeltBlock extends HorizontalKineticBlock implements IBE<BeltBlockEn
             }
             KineticBlockEntity.switchToBlockState(world, pos, state.setValue(PART, BeltPart.MIDDLE));
             if (player != null && !player.isCreative()) {
-                player.getInventory().placeItemBackInInventory(AllItems.SHAFT.getDefaultInstance());
+                InventoryCompat.placeItemBack(player.getInventory(), AllItems.SHAFT.getDefaultInstance());
             }
             return InteractionResult.SUCCESS;
         }

@@ -1,5 +1,6 @@
 package com.zurrtum.create.content.kinetics.belt;
 
+import com.zurrtum.create.foundation.utility.InventoryCompat;
 import com.zurrtum.create.AllBlocks;
 import com.zurrtum.create.AllItems;
 import com.zurrtum.create.catnip.math.VecHelper;
@@ -110,7 +111,7 @@ public class BeltSlicer {
             world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
 
             if (!creative && replacedState.is(AllBlocks.BELT) && replacedState.getValue(BeltBlock.PART) == BeltPart.PULLEY) {
-                player.getInventory().placeItemBackInInventory(AllItems.SHAFT.getDefaultInstance());
+                InventoryCompat.placeItemBack(player.getInventory(), AllItems.SHAFT.getDefaultInstance());
             }
 
             // Eject overshooting items
@@ -220,9 +221,9 @@ public class BeltSlicer {
                 }
 
                 if (!world.isClientSide()) {
-                    player.getInventory().placeItemBackInInventory(new ItemStack(AllItems.SHAFT, amountRetrieved));
+                    InventoryCompat.placeItemBack(player.getInventory(), new ItemStack(AllItems.SHAFT, amountRetrieved));
                     if (beltFound) {
-                        player.getInventory().placeItemBackInInventory(AllItems.BELT_CONNECTOR.getDefaultInstance());
+                        InventoryCompat.placeItemBack(player.getInventory(), AllItems.BELT_CONNECTOR.getDefaultInstance());
                     }
                 }
                 return InteractionResult.FAIL;
@@ -411,8 +412,8 @@ public class BeltSlicer {
                 );
 
                 if (!creative) {
-                    player.getInventory().placeItemBackInInventory(new ItemStack(AllBlocks.SHAFT, 2));
-                    player.getInventory().placeItemBackInInventory(AllItems.BELT_CONNECTOR.getDefaultInstance());
+                    InventoryCompat.placeItemBack(player.getInventory(), new ItemStack(AllBlocks.SHAFT, 2));
+                    InventoryCompat.placeItemBack(player.getInventory(), AllItems.BELT_CONNECTOR.getDefaultInstance());
                 }
 
                 for (BlockPos blockPos : BeltBlock.getBeltChain(world, controllerBE.getBlockPos())) {

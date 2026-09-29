@@ -1,5 +1,6 @@
 package com.zurrtum.create.content.kinetics.deployer;
 
+import com.zurrtum.create.foundation.utility.InventoryCompat;
 import com.mojang.serialization.Codec;
 import com.zurrtum.create.*;
 import com.zurrtum.create.api.behaviour.BlockEntityBehaviour;
@@ -502,7 +503,7 @@ public class DeployerBlockEntity extends KineticBlockEntity implements Clearable
         }
         ServerPlayer serverPlayer = player.cast();
         serverPlayer.getInventory().dropAll();
-        overflowItems.forEach(itemstack -> serverPlayer.drop(itemstack, true, false));
+        overflowItems.forEach(itemstack -> InventoryCompat.drop(serverPlayer, itemstack, true));
         serverPlayer.discard();
         player = null;
     }
