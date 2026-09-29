@@ -25,7 +25,6 @@ import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
@@ -61,65 +60,9 @@ public record PotionRecipe(FluidStack result, FluidIngredient fluidIngredient,
         if (data == null) {
             return;
         }
-        PotionBrewing potionBrewing = PotionBrewing.bootstrap(data.enabledFeatures);
-        int recipeIndex = 0;
-        List<Item> allowedSupportedContainers = new ArrayList<>();
-        for (Ingredient container : potionBrewing.containers) {
-            if (container.values instanceof HolderSet.Direct<Item> direct) {
-                //noinspection OptionalGetWithoutIsPresent
-                for (Holder<Item> holder : direct.unwrap().right().get()) {
-                    allowedSupportedContainers.add(holder.value());
-                }
-            }
-        }
-        for (Item container : allowedSupportedContainers) {
-            BottleType bottleType = PotionFluidHandler.bottleTypeFromItem(container);
-            for (PotionBrewing.Mix<Potion> mix : potionBrewing.potionMixes) {
-                FluidIngredient fromFluid = PotionFluidHandler.getFluidIngredientFromPotion(
-                    new PotionContents(mix.from()),
-                    bottleType,
-                    81000
-                );
-                FluidStack toFluid = PotionFluidHandler.getFluidFromPotion(
-                    new PotionContents(mix.to()),
-                    bottleType,
-                    81000
-                );
-                Identifier id = Identifier.fromNamespaceAndPath(MOD_ID, "potion_mixing_vanilla_" + recipeIndex++);
-                map.put(id, new PotionRecipe(toFluid, fromFluid, mix.ingredient()));
-            }
-        }
-        for (PotionBrewing.Mix<Item> mix : potionBrewing.containerMixes) {
-            Item from = mix.from().value();
-            if (!allowedSupportedContainers.contains(from)) {
-                continue;
-            }
-            Item to = mix.to().value();
-            if (!allowedSupportedContainers.contains(to)) {
-                continue;
-            }
-            BottleType fromBottleType = PotionFluidHandler.bottleTypeFromItem(from);
-            BottleType toBottleType = PotionFluidHandler.bottleTypeFromItem(to);
-            Ingredient ingredient = mix.ingredient();
-
-            List<Reference<Potion>> potions = data.registries.lookupOrThrow(Registries.POTION).listElements().toList();
-
-            for (Reference<Potion> potion : potions) {
-                FluidIngredient fromFluid = PotionFluidHandler.getFluidIngredientFromPotion(
-                    new PotionContents(potion),
-                    fromBottleType,
-                    81000
-                );
-                FluidStack toFluid = PotionFluidHandler.getFluidFromPotion(
-                    new PotionContents(potion),
-                    toBottleType,
-                    81000
-                );
-                Identifier id = Identifier.fromNamespaceAndPath(MOD_ID, "potion_mixing_vanilla_" + recipeIndex++);
-                map.put(id, new PotionRecipe(toFluid, fromFluid, ingredient));
-            }
-        }
-        data = null;
+        // TODO(26.3): PotionBrewing supprimé (recettes d'alchimie désormais pilotées par les données).
+        // Génération des recettes de potion vanilla du mélangeur désactivée.
+        return;
     }
 
     @Override
