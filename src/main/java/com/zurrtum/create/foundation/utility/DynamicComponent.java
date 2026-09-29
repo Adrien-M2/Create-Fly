@@ -37,9 +37,8 @@ public class DynamicComponent {
             Vec2.ZERO,
             level,
             LevelBasedPermissionSet.GAMEMASTER,
-            NamesProvider.constant(Component.literal(MOD_ID)),
-            level.getServer(),
-            null
+            Component.literal(MOD_ID),
+            level.getServer()
         );
     }
 
