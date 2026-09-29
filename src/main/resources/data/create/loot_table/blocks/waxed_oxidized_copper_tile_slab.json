@@ -12,7 +12,7 @@
               "conditions": [
                 {
                   "block": "create:waxed_oxidized_copper_tile_slab",
-                  "condition": "minecraft:block_state_property",
+                  "type": "minecraft:block_state_property",
                   "properties": {
                     "type": "double"
                   }
