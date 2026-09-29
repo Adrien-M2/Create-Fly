@@ -66,7 +66,6 @@
     "RenderTypeMixin",
     "SectionCompilerMixin",
     "TextureAtlasMixin",
-    "TrimSpriteKeyMixin",
     "WorldOpenFlowsMixin"
   ],
   "plugin": "com.zurrtum.create.client.mixin.MixinPlugin",
