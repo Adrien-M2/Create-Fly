@@ -28,6 +28,7 @@ public class AllPlacedFeatures {
     }
 
     public static void register(RegistryAccess registryManager) {
+        if (true) return; // TODO(26.3): worldgen (minerais) désactivé, à réécrire
         Registry<PlacedFeature> placed = registryManager.lookupOrThrow(Registries.PLACED_FEATURE);
         Holder<PlacedFeature> zincOverworld = placed.get(ZINC_ORE).orElseThrow();
         Holder<PlacedFeature> striatedOverworld = placed.get(STRIATED_ORES_OVERWORLD).orElseThrow();
