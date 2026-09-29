@@ -293,6 +293,9 @@ public class SchematicHandler {
     }
 
     public boolean onMouseInput(Minecraft mc, int button) {
+        if (active) {
+            com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] Schematic mouse button={} tool={}", button, currentTool);
+        }
         if (!active) {
             return false;
         }
