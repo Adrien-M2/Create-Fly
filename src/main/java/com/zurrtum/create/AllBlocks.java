@@ -219,7 +219,7 @@ public class AllBlocks {
     public static final GearboxBlock GEARBOX = (GearboxBlock) register(
         AllBlockItemIds.GEARBOX,
         GearboxBlock::new,
-        Properties.ofFullCopy(Blocks.ANDESITE).mapColor(MapColor.PODZOL).pushReaction(PushReaction.PUSH_ONLY)
+        Properties.ofFullCopy(Blocks.ANDESITE).mapColor(MapColor.PODZOL).pushReaction(PushReaction.PUSH)
     );
     public static final WaterWheelBlock WATER_WHEEL = (WaterWheelBlock) register(
         AllBlockItemIds.WATER_WHEEL,
@@ -401,7 +401,7 @@ public class AllBlocks {
             .overrideLootTable(Optional.of(ResourceKey.create(
                 Registries.LOOT_TABLE,
                 Identifier.fromNamespaceAndPath(MOD_ID, "blocks/mechanical_piston_head")
-            ))).mapColor(MapColor.DIRT).pushReaction(PushReaction.NORMAL)
+            ))).mapColor(MapColor.DIRT).pushReaction(PushReaction.PUSH_PULL)
     );
     public static final PistonExtensionPoleBlock PISTON_EXTENSION_POLE = (PistonExtensionPoleBlock) register(
         AllBlockItemIds.PISTON_EXTENSION_POLE,
@@ -410,7 +410,7 @@ public class AllBlocks {
             .overrideLootTable(Optional.of(ResourceKey.create(
                 Registries.LOOT_TABLE,
                 Identifier.fromNamespaceAndPath(MOD_ID, "blocks/piston_extension_pole")
-            ))).sound(SoundType.SCAFFOLDING).mapColor(MapColor.DIRT).pushReaction(PushReaction.NORMAL).forceSolidOn()
+            ))).sound(SoundType.SCAFFOLDING).mapColor(MapColor.DIRT).pushReaction(PushReaction.PUSH_PULL).forceSolidOn()
     );
     public static final SailBlock SAIL_FRAME = (SailBlock) register(
         AllBlockItemIds.SAIL_FRAME,

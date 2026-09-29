@@ -1,5 +1,6 @@
 package com.zurrtum.create;
 
+import net.minecraft.world.item.component.SwingAnimation;
 import com.zurrtum.create.foundation.utility.InventoryCompat;
 import com.zurrtum.create.api.behaviour.BlockEntityBehaviour;
 import com.zurrtum.create.api.behaviour.display.DisplaySource;
@@ -1121,7 +1122,7 @@ public class AllHandle {
             return;
         }
         if (contraptionEntity.handlePlayerInteraction(sender, packet.localPos(), packet.face(), packet.hand())) {
-            sender.swing(packet.hand(), true);
+            sender.swing(packet.hand(), SwingAnimation.DEFAULT, true);
         }
     }
 
