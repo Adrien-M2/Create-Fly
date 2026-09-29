@@ -115,6 +115,9 @@ public class SchematicItem extends Item {
             return;
         }
         for (net.minecraft.nbt.Tag entry : list) {
+            if (entry instanceof net.minecraft.nbt.CompoundTag dbg && String.valueOf(dbg).contains("pointed_dripstone")) {
+                LOGGER.info("[Create 26.3 port] palette entry (dripstone): {}", dbg);
+            }
             if (entry instanceof net.minecraft.nbt.CompoundTag compound && compound.get("id") == null) {
                 net.minecraft.nbt.Tag name = compound.get("Name");
                 if (name != null) {
