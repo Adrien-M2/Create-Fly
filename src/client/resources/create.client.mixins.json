@@ -71,6 +71,6 @@
   ],
   "plugin": "com.zurrtum.create.client.mixin.MixinPlugin",
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 0
   }
 }
