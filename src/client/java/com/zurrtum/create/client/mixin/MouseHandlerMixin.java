@@ -25,7 +25,7 @@ public class MouseHandlerMixin {
      * DEV 26.3 workaround: in this dev environment button events arrive with SDL numbering
      * (1 = left, 2 = middle, 3 = right) while the game expects 0 = left, 1 = right, 2 = middle.
      */
-    @ModifyVariable(method = "onButton(JLnet/minecraft/client/input/MouseButtonInfo;I)V", at = @At("HEAD"), argsOnly = true)
+    @ModifyVariable(method = "onButton(JLnet/minecraft/client/input/MouseButtonInfo;I)V", at = @At("HEAD"), argsOnly = true, require = 1)
     private MouseButtonInfo create$remapSdlButtons(MouseButtonInfo info) {
         int button = info.button();
         int mapped = switch (button) {
@@ -33,6 +33,7 @@ public class MouseHandlerMixin {
             case 3 -> 1;
             default -> button;
         };
+        com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] Mouse button raw={} mapped={}", button, mapped);
         return mapped == button ? info : new MouseButtonInfo(mapped, info.modifiers());
     }
 
