@@ -35,7 +35,7 @@ public class SignDisplayTarget extends DisplayTarget {
 
             final int iFinal = i;
             String content = text.get(iFinal).getString(sign.getMaxTextLineWidth());
-            signText = signText.map(st -> st.setMessage(iFinal + line, Component.literal(content)));
+            signText = signText.map(st -> st.asMutable().setLine(iFinal + line, Component.literal(content)).asImmutable());
             changed = true;
         }
 
