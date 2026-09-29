@@ -82,7 +82,7 @@ public class AllItemAttributeTypes {
     );
     public static final ItemAttributeType COMPOSTABLE = singleton(
         "compostable",
-        s -> ComposterBlock.COMPOSTABLES.containsKey(s.getItem())
+        s -> s.has(DataComponents.COMPOSTABLE)
     );
 
     public static final ItemAttributeType IN_TAG = register("in_tag", new InTagAttribute.Type());
