@@ -120,10 +120,7 @@ public class PackageEntity extends LivingEntity {
         return createLivingAttributes().add(Attributes.MAX_HEALTH, 5.0f).add(Attributes.MOVEMENT_SPEED, 1.0f);
     }
 
-    @Override
-    public boolean canSimulateMovement() {
-        return true;
-    }
+    // TODO(26.3): Entity#canSimulateMovement est devenu final -> override retiré (comportement à vérifier).
 
     @Override
     public boolean isEffectiveAi() {

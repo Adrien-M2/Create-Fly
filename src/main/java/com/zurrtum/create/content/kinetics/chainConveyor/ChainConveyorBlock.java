@@ -18,6 +18,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -85,7 +86,7 @@ public class ChainConveyorBlock extends KineticBlock implements IBE<ChainConveyo
     @Override
     public void playerDestroy(
         ServerLevel level,
-        Player player,
+        ServerPlayer player,
         BlockPos pos,
         BlockState state,
         @Nullable BlockEntity blockEntity,
