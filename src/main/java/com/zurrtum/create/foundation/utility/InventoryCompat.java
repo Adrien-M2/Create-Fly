@@ -1,5 +1,6 @@
 package com.zurrtum.create.foundation.utility;
 
+import net.minecraft.util.Prediction;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
