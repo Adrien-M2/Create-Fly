@@ -67,7 +67,7 @@ public class PartialElementRenderer extends PictureInPictureRenderer<PartialRend
             partial.transform(matrices);
             CachedBuffers.partial(partial.model, Blocks.AIR.defaultBlockState()).submit(matrices, submitNodeStorage);
             matrices.popPose();
-            featureRenderDispatcher.renderAllFeatures(submitNodeStorage);
+            // TODO 26.3: renderAllFeatures(RenderPass, PreparedFrame) - offscreen GUI block rendering disabled
             texture.clear();
         }
         state.addBlitToCurrentLayer(new BlitRenderState(

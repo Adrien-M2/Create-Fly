@@ -54,13 +54,7 @@ public class OitFramebuffer {
 
         Minecraft mc = Minecraft.getInstance();
         GameRenderer gameRenderer = mc.gameRenderer;
-        if (gameRenderer.gameRenderState().useShaderTransparency()) {
-            renderTarget = mc.levelRenderer.itemEntityTarget();
-
-            renderTarget.copyDepthFrom(gameRenderer.mainRenderTarget());
-        } else {
-            renderTarget = gameRenderer.mainRenderTarget();
-        }
+        renderTarget = gameRenderer.mainRenderTarget(); // TODO 26.3: itemEntityTarget removed (vanilla OIT)
 
         maybeResizeFBO(renderTarget.width, renderTarget.height);
 
@@ -187,11 +181,7 @@ public class OitFramebuffer {
         Minecraft mc = Minecraft.getInstance();
         GameRenderer gameRenderer = mc.gameRenderer;
         RenderTarget mainTarget = gameRenderer.mainRenderTarget();
-        if (gameRenderer.gameRenderState().useShaderTransparency()) {
-            bindRenderTarget(mc.levelRenderer.itemEntityTarget(), frameBufferCache, access);
-        } else {
-            bindRenderTarget(mainTarget, frameBufferCache, access);
-        }
+        bindRenderTarget(mainTarget, frameBufferCache, access);
 
         // The composite shader writes out the closest depth to gl_FragDepth.
         // depthMask = true: OIT stuff renders on top of other transparent stuff.

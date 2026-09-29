@@ -50,13 +50,13 @@ public record GpuTexture(int width, int height, com.mojang.renderpearl.api.textu
             .clearColorAndDepthTextures(texture, GuiRenderer.CLEAR_COLOR, depthTexture, 0);
         projection.setupOrtho(-1000.0F, 1000.0F, width, height, true);
         RenderSystem.setProjectionMatrix(projectionMatrixBuffer.getBuffer(projection), ProjectionType.ORTHOGRAPHIC);
-        RenderSystem.outputColorTextureOverride = textureView;
-        RenderSystem.outputDepthTextureOverride = depthTextureView;
+        // TODO 26.3: RenderSystem.outputColorTextureOverride = textureView;
+        // TODO 26.3: RenderSystem.outputDepthTextureOverride = depthTextureView;
     }
 
     public void clear() {
-        RenderSystem.outputColorTextureOverride = null;
-        RenderSystem.outputDepthTextureOverride = null;
+        // TODO 26.3: RenderSystem.outputColorTextureOverride = null;
+        // TODO 26.3: RenderSystem.outputDepthTextureOverride = null;
     }
 
     public void close() {

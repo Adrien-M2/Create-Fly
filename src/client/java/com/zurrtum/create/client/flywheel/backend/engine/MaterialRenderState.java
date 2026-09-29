@@ -186,7 +186,7 @@ public final class MaterialRenderState {
         int fbo = device.frameBufferCache().getFbo(
             device.directStateAccess(),
             Collections.singletonList((GlTexture) target.getColorTexture()),
-            target.useDepth ? (GlTexture) target.getDepthTexture() : null
+            target.getDepthTexture() != null ? (GlTexture) target.getDepthTexture() : null
         );
         GlStateManager._glBindFramebuffer(GL_FRAMEBUFFER, fbo);
     }

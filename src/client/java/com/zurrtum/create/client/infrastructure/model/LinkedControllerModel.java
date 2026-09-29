@@ -322,7 +322,7 @@ public class LinkedControllerModel implements ItemModel, SpecialModelRenderer<Re
         int overlay,
         List<BakedQuad> quads
     ) {
-        queue.submitItem(matrices, displayContext, light, overlay, 0, tints, quads, FoilType.NONE);
+        queue.submitItem(matrices, displayContext, light, overlay, 0, tints, net.minecraft.client.resources.model.geometry.ItemQuads.split(quads), FoilType.NONE);
     }
 
     public static class RenderData {

@@ -5,7 +5,6 @@ import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.player.AvatarRenderer;
@@ -71,7 +70,6 @@ public abstract class ShootableGadgetRenderHandler {
         ItemStack heldItem,
         Minecraft mc,
         EntityRenderDispatcher entityRenderDispatcher,
-        ItemInHandRenderer firstPersonRenderer,
         PoseStack ms,
         SubmitNodeCollector queue,
         int light,
@@ -85,7 +83,8 @@ public abstract class ShootableGadgetRenderHandler {
         }
 
         AbstractClientPlayer player = mc.player;
-        AvatarRenderer<AbstractClientPlayer> playerrenderer = entityRenderDispatcher.getPlayerRenderer(player);
+        @SuppressWarnings("unchecked")
+        AvatarRenderer<AbstractClientPlayer> playerrenderer = (AvatarRenderer<AbstractClientPlayer>) entityRenderDispatcher.getRenderer(player);
 
         boolean rightHand = hand == InteractionHand.MAIN_HAND ^ player.getMainArm() == HumanoidArm.LEFT;
         float recoil = rightHand ? Mth.lerp(pt, lastRightHandAnimation, rightHandAnimation) :

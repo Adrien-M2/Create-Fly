@@ -32,7 +32,7 @@ public class NoiseTextures {
         }
 
         try (var is = optional.get().open()) {
-            var image = NativeImage.read(NativeImage.Format.LUMINANCE, is);
+            var image = NativeImage.read(is);
             BLUE_NOISE = new NoiseTexture(image);
         } catch (IOException e) {
 

@@ -34,9 +34,9 @@ public class BakedItemModelBufferer {
     static final List<RenderType> CHUNK_LAYERS = List.of(
         Sheets.cutoutBlockItemSheet(),
         Sheets.translucentItemSheet(),
-        RenderTypes.glint(),
-        RenderTypes.glintTranslucent(),
-        RenderTypes.entityGlint()
+        RenderTypes.itemCutoutGlint(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS),
+        RenderTypes.itemTranslucentGlint(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS),
+        RenderTypes.entitySolidGlint(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS)
     );
 
     public static void bufferItemStack(
