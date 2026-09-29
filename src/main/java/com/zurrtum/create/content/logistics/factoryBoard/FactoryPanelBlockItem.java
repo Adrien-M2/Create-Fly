@@ -45,14 +45,14 @@ public class FactoryPanelBlockItem extends LogisticallyLinkedBlockItem {
         return super.place(pContext);
     }
 
-    @Override
-    protected boolean updateCustomBlockEntityTag(
+    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
+    protected boolean legacyUpdateCustomBlockEntityTag(
         Level level,
         @Nullable Player player,
         BlockPos pos,
         ItemStack stack
     ) {
-        return super.updateCustomBlockEntityTag(level, player, pos, fixCtrlCopiedStack(stack));
+        return BlockItem.updateCustomBlockEntityTag(level, player, pos, fixCtrlCopiedStack(stack));
     }
 
     public static ItemStack fixCtrlCopiedStack(ItemStack stack) {

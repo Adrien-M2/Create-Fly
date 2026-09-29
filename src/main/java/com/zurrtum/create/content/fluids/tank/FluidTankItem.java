@@ -42,8 +42,8 @@ public class FluidTankItem extends BlockItem {
         return initialResult;
     }
 
-    @Override
-    protected boolean updateCustomBlockEntityTag(
+    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
+    protected boolean legacyUpdateCustomBlockEntityTag(
         Level level,
         @Nullable Player player,
         BlockPos blockPos,
@@ -73,7 +73,7 @@ public class FluidTankItem extends BlockItem {
                 TypedEntityData.of(((IBE<?>) getBlock()).getBlockEntityType(), nbt)
             );
         }
-        return super.updateCustomBlockEntityTag(level, player, blockPos, itemStack);
+        return BlockItem.updateCustomBlockEntityTag(level, player, blockPos, itemStack);
     }
 
     private void tryMultiPlace(BlockPlaceContext ctx) {

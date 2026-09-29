@@ -29,8 +29,8 @@ public class EjectorItem extends BlockItem {
         return super.useOn(ctx);
     }
 
-    @Override
-    protected boolean updateCustomBlockEntityTag(
+    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
+    protected boolean legacyUpdateCustomBlockEntityTag(
         Level world,
         @Nullable Player player,
         BlockPos pos,
@@ -39,7 +39,7 @@ public class EjectorItem extends BlockItem {
         if (!world.isClientSide() && player instanceof ServerPlayer sp) {
             sp.connection.send(new EjectorPlacementRequestPacket(pos));
         }
-        return super.updateCustomBlockEntityTag(world, player, pos, p_195943_4_);
+        return BlockItem.updateCustomBlockEntityTag(world, player, pos, p_195943_4_);
     }
 
     @Override

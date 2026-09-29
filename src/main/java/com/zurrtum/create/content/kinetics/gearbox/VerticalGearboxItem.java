@@ -28,8 +28,8 @@ public class VerticalGearboxItem extends BlockItem {
     public void registerBlocks(Map<Block, Item> p_195946_1_, Item p_195946_2_) {
     }
 
-    @Override
-    protected boolean updateCustomBlockEntityTag(
+    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
+    protected boolean legacyUpdateCustomBlockEntityTag(
         Level world,
         @Nullable Player player,
         BlockPos pos,
@@ -58,7 +58,7 @@ public class VerticalGearboxItem extends BlockItem {
         Axis axis = prefferedAxis == null ? player.getDirection().getClockWise().getAxis() :
             prefferedAxis == Axis.X ? Axis.Z : Axis.X;
         world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.AXIS, axis));
-        return super.updateCustomBlockEntityTag(world, player, pos, stack);
+        return BlockItem.updateCustomBlockEntityTag(world, player, pos, stack);
     }
 
 }

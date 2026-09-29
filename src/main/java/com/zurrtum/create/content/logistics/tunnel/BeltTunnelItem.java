@@ -35,15 +35,15 @@ public class BeltTunnelItem extends BlockItem {
         )) && world.isUnobstructed(state, pos, iselectioncontext);
     }
 
-    @Override
-    protected boolean updateCustomBlockEntityTag(
+    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
+    protected boolean legacyUpdateCustomBlockEntityTag(
         Level world,
         @Nullable Player p_195943_3_,
         BlockPos pos,
         ItemStack p_195943_4_
     ) {
         BlockState state = world.getBlockState(pos);
-        boolean flag = super.updateCustomBlockEntityTag(world, p_195943_3_, pos, p_195943_4_);
+        boolean flag = BlockItem.updateCustomBlockEntityTag(world, p_195943_3_, pos, p_195943_4_);
         if (!world.isClientSide()) {
             BeltBlockEntity belt = BeltHelper.getSegmentBE(world, pos.below());
             if (belt != null && belt.casing == CasingType.NONE) {

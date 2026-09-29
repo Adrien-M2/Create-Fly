@@ -36,8 +36,8 @@ public class ClipboardBlockItem extends BlockItem implements SupportsItemCopying
         return use(context.getLevel(), player, context.getHand());
     }
 
-    @Override
-    protected boolean updateCustomBlockEntityTag(
+    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
+    protected boolean legacyUpdateCustomBlockEntityTag(
         Level pLevel,
         @Nullable Player pPlayer,
         BlockPos pPos,
