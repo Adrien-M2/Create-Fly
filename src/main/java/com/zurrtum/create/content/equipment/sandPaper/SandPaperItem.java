@@ -197,7 +197,7 @@ public class SandPaperItem extends Item {
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
 
-        Optional<BlockState> newState = ((AxeItem) Items.DIAMOND_AXE).getStripped(state);
+        Optional<BlockState> newState = Optional.empty() /* TODO 26.3: AxeItem.getStripped supprimé, à recâbler */;
         if (newState.isPresent()) {
             AllSoundEvents.SANDING_LONG.play(
                 level,
