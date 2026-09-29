@@ -999,12 +999,14 @@ public class AllHandle {
     public static void onSchematicPlace(ServerGamePacketListenerImpl listener, SchematicPlacePacket packet) {
         PacketUtils.ensureRunningOnSameThread(packet, listener, listener.server.packetProcessor());
         ServerPlayer player = listener.player;
+        Create.LOGGER.info("[Create 26.3 port] SchematicPlacePacket received, creative={}", player.isCreative());
         if (!player.isCreative()) {
             return;
         }
         ServerLevel world = player.level();
         SchematicPrinter printer = new SchematicPrinter();
         printer.loadSchematic(packet.stack(), world, !player.canUseGameMasterBlocks());
+        Create.LOGGER.info("[Create 26.3 port] SchematicPrinter loaded={} errored={}", printer.isLoaded(), printer.isErrored());
         if (!printer.isLoaded() || printer.isErrored()) {
             return;
         }
