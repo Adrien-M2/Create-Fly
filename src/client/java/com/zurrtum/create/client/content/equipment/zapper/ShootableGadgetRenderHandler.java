@@ -144,14 +144,16 @@ public abstract class ShootableGadgetRenderHandler {
         ms.rotate(Axis.YP.rotationDegrees(flip * f6 * 70.0F));
         ms.rotate(Axis.ZP.rotationDegrees(flip * f5 * -20.0F));
         transformTool(ms, flip, equipProgress, recoil, pt);
-        firstPersonRenderer.renderItem(
-            player,
+        net.minecraft.client.renderer.item.ItemStackRenderState itemState = new net.minecraft.client.renderer.item.ItemStackRenderState();
+        mc.getItemModelResolver().updateForTopItem(
+            itemState,
             heldItem,
             rightHand ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND,
-            ms,
-            queue,
-            light
+            mc.level,
+            player,
+            0
         );
+        itemState.submit(ms, queue, light, net.minecraft.client.renderer.texture.OverlayTexture.NO_OVERLAY, 0);
         ms.popPose();
         return true;
     }
