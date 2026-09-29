@@ -38,11 +38,10 @@ public class ClipboardBlockItem extends BlockItem implements SupportsItemCopying
 
     @Override
     protected boolean updateCustomBlockEntityTag(
-        BlockPos pPos,
         Level pLevel,
         @Nullable Player pPlayer,
-        ItemStack pStack,
-        BlockState pState
+        BlockPos pPos,
+        ItemStack pStack
     ) {
         if (pLevel.isClientSide()) {
             return false;

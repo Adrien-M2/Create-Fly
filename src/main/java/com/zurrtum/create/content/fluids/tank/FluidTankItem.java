@@ -44,11 +44,10 @@ public class FluidTankItem extends BlockItem {
 
     @Override
     protected boolean updateCustomBlockEntityTag(
-        BlockPos blockPos,
         Level level,
         @Nullable Player player,
-        ItemStack itemStack,
-        BlockState blockState
+        BlockPos blockPos,
+        ItemStack itemStack
     ) {
         MinecraftServer minecraftserver = level.getServer();
         if (minecraftserver == null) {
@@ -74,7 +73,7 @@ public class FluidTankItem extends BlockItem {
                 TypedEntityData.of(((IBE<?>) getBlock()).getBlockEntityType(), nbt)
             );
         }
-        return super.updateCustomBlockEntityTag(blockPos, level, player, itemStack, blockState);
+        return super.updateCustomBlockEntityTag(level, player, blockPos, itemStack);
     }
 
     private void tryMultiPlace(BlockPlaceContext ctx) {
