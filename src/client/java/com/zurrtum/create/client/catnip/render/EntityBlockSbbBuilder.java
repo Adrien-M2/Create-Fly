@@ -170,6 +170,11 @@ public class EntityBlockSbbBuilder implements BufferEmitter {
         }
 
         @Override
+        public VertexConsumer setUv3(float u, float v) {
+            return this;
+        }
+
+        @Override
         public VertexConsumer setUv2(int u, int v) {
             throw new UnsupportedOperationException("TemplateMeshBuffer only supports addVertex!");
         }

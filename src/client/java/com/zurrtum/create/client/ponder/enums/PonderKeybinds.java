@@ -14,7 +14,7 @@ public class PonderKeybinds {
 
     private static KeyMapping register(String description, int defaultKey) {
         KeyMapping keyBinding = new KeyMapping("key.ponder." + description, 0, CATEGORY);
-        Key key = InputConstants.Type.KEYSYM.getOrCreate(defaultKey);
+        Key key = InputConstants.Type.KEYBOARD.getOrCreate(defaultKey);
         keyBinding.defaultKey = key;
         keyBinding.setKey(key);
         return keyBinding;

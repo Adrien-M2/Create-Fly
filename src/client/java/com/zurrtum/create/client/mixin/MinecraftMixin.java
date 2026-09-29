@@ -1,5 +1,6 @@
 package com.zurrtum.create.client.mixin;
 
+import net.minecraft.world.item.component.SwingAnimation;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -243,7 +244,7 @@ public abstract class MinecraftMixin {
         ) || FactoryPanelConnectionHandler.onRightClick(mc) || ChainConveyorConnectionHandler.onRightClick(mc) || TrainRelocatorClient.onClicked(
             mc) || ChainConveyorInteractionHandler.onUse(mc) || PackagePortTargetSelectionHandler.onUse(mc) || ChainPackageInteractionHandler.onUse(
             mc))) {
-            player.swing(InteractionHand.MAIN_HAND);
+            player.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT, true);
             ci.cancel();
         } else if (ContraptionHandlerClient.rightClickingOnContraptionsGetsHandledLocally(mc, hand)) {
             ci.cancel();
@@ -271,7 +272,7 @@ public abstract class MinecraftMixin {
     private void doAttack(CallbackInfoReturnable<Boolean> cir) {
         Minecraft mc = (Minecraft) (Object) this;
         if (CurvedTrackInteraction.onClickInput(mc, true) || Create.GLUE_HANDLER.onMouseInput(mc, true)) {
-            player.swing(InteractionHand.MAIN_HAND);
+            player.swing(InteractionHand.MAIN_HAND, SwingAnimation.DEFAULT, true);
             cir.setReturnValue(false);
         }
     }
