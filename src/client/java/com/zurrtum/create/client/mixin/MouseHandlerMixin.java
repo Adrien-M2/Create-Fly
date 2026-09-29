@@ -12,7 +12,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MouseHandler.class)
@@ -20,22 +19,6 @@ public class MouseHandlerMixin {
     @Shadow
     @Final
     private Minecraft minecraft;
-
-    /**
-     * DEV 26.3 workaround: in this dev environment button events arrive with SDL numbering
-     * (1 = left, 2 = middle, 3 = right) while the game expects 0 = left, 1 = right, 2 = middle.
-     */
-    @ModifyVariable(method = "onButton(JLnet/minecraft/client/input/MouseButtonInfo;I)V", at = @At("HEAD"), argsOnly = true, require = 1)
-    private MouseButtonInfo create$remapSdlButtons(MouseButtonInfo info) {
-        int button = info.button();
-        int mapped = switch (button) {
-            case 1 -> 0;
-            case 3 -> 1;
-            default -> button;
-        };
-        com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] Mouse button raw={} mapped={}", button, mapped);
-        return mapped == button ? info : new MouseButtonInfo(mapped, info.modifiers());
-    }
 
     @Inject(method = "onButton(JLnet/minecraft/client/input/MouseButtonInfo;I)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;overlay()Lnet/minecraft/client/gui/screens/Overlay;", ordinal = 0), cancellable = true, require = 1)
     private void onMouseButton(long handle, MouseButtonInfo rawButtonInfo, int action, CallbackInfo ci) {

@@ -120,7 +120,7 @@ public class StockKeeperCategoryScreen extends AbstractSimiContainerScreen<Stock
         editorEditBox.setTextColor(0xffeeeeee);
         editorEditBox.setBordered(false);
         editorEditBox.setFocused(false);
-        editorEditBox.mouseClicked(new MouseButtonEvent(0, 0, new MouseButtonInfo(0, 0)), false);
+        editorEditBox.mouseClicked(new MouseButtonEvent(0, 0, new MouseButtonInfo(InputConstants.MOUSE_BUTTON_LEFT, 0)), false);
         editorEditBox.setMaxLength(28);
         editorEditBox.setValue(index == -1 || schedule.get(index).isEmpty() ?
             CreateLang.translate("gui.stock_ticker.new_category").string() :
