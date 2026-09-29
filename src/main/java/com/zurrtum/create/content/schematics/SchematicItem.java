@@ -96,6 +96,35 @@ public class SchematicItem extends Item {
         return settings;
     }
 
+    /**
+     * 26.3 port: block states in NBT now use "id" instead of "Name". Old schematic files
+     * are not run through the DataFixer here, so rename the palette keys ourselves.
+     */
+    public static void upgradeLegacyPalettes(net.minecraft.nbt.CompoundTag nbt) {
+        upgradePalette(nbt.get("palette"));
+        net.minecraft.nbt.Tag palettes = nbt.get("palettes");
+        if (palettes instanceof net.minecraft.nbt.ListTag list) {
+            for (net.minecraft.nbt.Tag palette : list) {
+                upgradePalette(palette);
+            }
+        }
+    }
+
+    private static void upgradePalette(net.minecraft.nbt.Tag palette) {
+        if (!(palette instanceof net.minecraft.nbt.ListTag list)) {
+            return;
+        }
+        for (net.minecraft.nbt.Tag entry : list) {
+            if (entry instanceof net.minecraft.nbt.CompoundTag compound && compound.get("id") == null) {
+                net.minecraft.nbt.Tag name = compound.get("Name");
+                if (name != null) {
+                    compound.remove("Name");
+                    compound.put("id", name);
+                }
+            }
+        }
+    }
+
     public static StructureTemplate loadSchematic(Level level, ItemStack blueprint) {
         StructureTemplate t = new StructureTemplate();
         String owner = blueprint.get(AllDataComponents.SCHEMATIC_OWNER);
@@ -125,6 +154,7 @@ public class SchematicItem extends Item {
             StandardOpenOption.READ
         ))))) {
             CompoundTag nbt = NbtIo.read(stream, NbtAccounter.create(0x20000000L));
+            upgradeLegacyPalettes(nbt);
             t.load(level.holderLookup(Registries.BLOCK), nbt);
         } catch (IOException e) {
             LOGGER.warn("Failed to read schematic", e);
