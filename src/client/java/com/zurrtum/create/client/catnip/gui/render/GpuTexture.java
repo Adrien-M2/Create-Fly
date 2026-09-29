@@ -2,7 +2,7 @@ package com.zurrtum.create.client.catnip.gui.render;
 
 import com.mojang.renderpearl.api.GpuFormat;
 import com.mojang.blaze3d.ProjectionType;
-import com.mojang.blaze3d.systems.GpuDevice;
+import com.mojang.renderpearl.api.device.GpuDevice;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import net.minecraft.client.gui.render.GuiRenderer;

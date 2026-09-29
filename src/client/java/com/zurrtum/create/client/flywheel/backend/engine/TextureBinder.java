@@ -1,8 +1,8 @@
 package com.zurrtum.create.client.flywheel.backend.engine;
 
-import com.mojang.blaze3d.opengl.GlSampler;
-import com.mojang.blaze3d.opengl.GlStateManager;
-import com.mojang.blaze3d.opengl.GlTexture;
+import com.mojang.renderpearl.backend.opengl.GlSampler;
+import com.mojang.renderpearl.backend.opengl.GlStateManager;
+import com.mojang.renderpearl.backend.opengl.GlTexture;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.renderpearl.api.textures.GpuSampler;
@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL12;
 import org.lwjgl.opengl.GL13;
 import org.lwjgl.opengl.GL33C;
 
-import static com.mojang.blaze3d.opengl.GlConst.GL_TEXTURE_2D;
+import static com.mojang.renderpearl.backend.opengl.GlConst.GL_TEXTURE_2D;
 
 public class TextureBinder {
     public static void bind(Identifier Identifier) {

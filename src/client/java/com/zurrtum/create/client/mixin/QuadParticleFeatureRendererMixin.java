@@ -1,6 +1,6 @@
 package com.zurrtum.create.client.mixin;
 
-import com.mojang.blaze3d.buffers.GpuBufferSlice;
+import com.mojang.renderpearl.api.buffers.GpuBufferSlice;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.renderpearl.api.textures.GpuTextureView;
 import com.zurrtum.create.client.ponder.foundation.render.DynamicTransformsHolder;

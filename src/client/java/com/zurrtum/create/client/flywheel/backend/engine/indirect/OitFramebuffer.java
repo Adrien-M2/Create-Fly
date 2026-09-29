@@ -1,6 +1,6 @@
 package com.zurrtum.create.client.flywheel.backend.engine.indirect;
 
-import com.mojang.blaze3d.opengl.*;
+import com.mojang.renderpearl.backend.opengl.*;
 import com.mojang.renderpearl.api.pipeline.ColorTargetState;
 import com.mojang.blaze3d.pipeline.RenderTarget;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -15,7 +15,7 @@ import org.lwjgl.opengl.*;
 
 import java.util.Collections;
 
-import static com.mojang.blaze3d.opengl.GlConst.*;
+import static com.mojang.renderpearl.backend.opengl.GlConst.*;
 
 public class OitFramebuffer {
     public static final float[] CLEAR_TO_ZERO = {0, 0, 0, 0};
@@ -181,7 +181,7 @@ public class OitFramebuffer {
      * Composite the accumulated luminance onto the main framebuffer.
      */
     public void composite() {
-        GlDevice device = (GlDevice) RenderSystem.getDevice().backend;
+        GlDevice device = (GlDevice) RenderSystem.getDevice();
         FrameBufferCache frameBufferCache = device.frameBufferCache();
         DirectStateAccess access = device.directStateAccess();
         Minecraft mc = Minecraft.getInstance();

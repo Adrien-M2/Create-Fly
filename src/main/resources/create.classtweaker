@@ -1,5 +1,5 @@
 classTweaker v1 official
-accessible class com/mojang/blaze3d/opengl/GlDevice
+accessible class com/mojang/renderpearl/backend/opengl/GlDevice
 accessible class net/minecraft/client/gui/GuiGraphicsExtractor$ScissorStack
 accessible class net/minecraft/client/gui/render/GuiRenderer$Draw
 accessible class net/minecraft/client/particle/ParticleResources$SpriteParticleRegistration
@@ -16,8 +16,7 @@ accessible class net/minecraft/world/item/CreativeModeTab$TabVisibility
 accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
 accessible class net/minecraft/world/level/lighting/BlockLightSectionStorage$BlockDataLayerStorageMap
 accessible class net/minecraft/world/level/lighting/SkyLightSectionStorage$SkyDataLayerStorageMap
-accessible field com/mojang/blaze3d/opengl/GlStateManager activeTexture I
-accessible field com/mojang/blaze3d/systems/GpuDevice backend Lcom/mojang/blaze3d/systems/GpuDeviceBackend;
+accessible field com/mojang/renderpearl/backend/opengl/GlStateManager activeTexture I
 accessible field com/mojang/blaze3d/vertex/BufferBuilder vertices I
 accessible field com/mojang/blaze3d/vertex/PoseStack poses Ljava/util/List;
 accessible field com/mojang/blaze3d/vertex/PoseStack$Pose trustedNormals Z
