@@ -396,6 +396,7 @@ public class ClipboardScreen extends AbstractSimiScreen {
     @Override
     public boolean keyPressed(KeyEvent input) {
         int pKeyCode = input.key();
+        com.zurrtum.create.Create.LOGGER.info("[Create 26.3 port] Clipboard keyPressed key={} editingIndex={}", pKeyCode, editingIndex);
         if (pKeyCode == 266) {
             backward.onPress(input);
             return true;
@@ -415,7 +416,16 @@ public class ClipboardScreen extends AbstractSimiScreen {
 
     @Override
     public boolean charTyped(CharacterEvent input) {
-        if (super.charTyped(input)) {
+        boolean superResult = super.charTyped(input);
+        com.zurrtum.create.Create.LOGGER.info(
+            "[Create 26.3 port] Clipboard charTyped '{}' super={} allowed={} editingIndex={} focused={}",
+            input.codepointAsString(),
+            superResult,
+            input.isAllowedChatCharacter(),
+            editingIndex,
+            getFocused()
+        );
+        if (superResult) {
             return true;
         }
         if (!input.isAllowedChatCharacter()) {
