@@ -8,6 +8,10 @@ import com.zurrtum.create.AllSoundEvents;
 import com.zurrtum.create.catnip.math.VecHelper;
 import com.zurrtum.create.infrastructure.component.SandPaperItemComponent;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
+import net.minecraft.core.component.BlockTransformer;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -189,6 +193,27 @@ public class SandPaperItem extends Item {
         return false;
     }
 
+    /**
+     * 26.3: AxeItem.getStripped no longer exists, stripping is a BlockTransformer data component on axes.
+     * Only the resulting state is computed here, the sandpaper handles damage, sound and particles itself.
+     */
+    private static Optional<BlockState> getStripped(Level level, BlockPos pos, Direction face) {
+        Holder<BlockTransformer> holder = new ItemStack(Items.IRON_AXE).get(DataComponents.BLOCK_TRANSFORMER);
+        if (holder == null) {
+            return Optional.empty();
+        }
+        for (BlockTransformer.BlockTransformData data : holder.value().transforms()) {
+            if (data.disallowedFaces().contains(face)) {
+                continue;
+            }
+            BlockState result = data.blockStateProvider().value().getOptionalState(level, level.getRandom(), pos);
+            if (result != null) {
+                return Optional.of(result);
+            }
+        }
+        return Optional.empty();
+    }
+
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Player player = context.getPlayer();
@@ -197,7 +222,7 @@ public class SandPaperItem extends Item {
         BlockPos pos = context.getClickedPos();
         BlockState state = level.getBlockState(pos);
 
-        Optional<BlockState> newState = Optional.empty() /* TODO 26.3: AxeItem.getStripped supprimé, à recâbler */;
+        Optional<BlockState> newState = getStripped(level, pos, context.getClickedFace());
         if (newState.isPresent()) {
             AllSoundEvents.SANDING_LONG.play(
                 level,
