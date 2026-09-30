@@ -22,7 +22,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.component.TypedDataComponent;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
@@ -92,9 +92,9 @@ public record PotionRecipe(FluidStack result, FluidIngredient fluidIngredient,
             BottleType toBottleType = PotionFluidHandler.bottleTypeFromItem(outputItem);
             // The item prototype components are not bound yet while the RecipeMap is built: read the patch only.
             PotionContents outputContents = null;
-            for (Map.Entry<DataComponentType<?>, Optional<?>> entry : output.components().entrySet()) {
-                if (entry.getKey() == DataComponents.POTION_CONTENTS && entry.getValue().isPresent()) {
-                    outputContents = (PotionContents) entry.getValue().get();
+            for (TypedDataComponent<?> component : output.components().split().added()) {
+                if (component.type() == DataComponents.POTION_CONTENTS) {
+                    outputContents = (PotionContents) component.value();
                 }
             }
             for (Item bottle : BOTTLES) {
