@@ -270,40 +270,7 @@ public class ArmBlockEntity extends KineticBlockEntity implements TransformableB
         return null;
     }
 
-    private int devLogCounter;
-
     protected void searchForItem() {
-        if (++devLogCounter % 100 == 1) {
-            StringBuilder sb = new StringBuilder();
-            for (ArmInteractionPoint p : inputs) {
-                sb.append(String.format(
-                    " [in %s %s valid=%s slots=%d extract=%s]", p.getType(), p.getPos(), p.isValid(), p.getSlotCount(this),
-                    p.extract(this, 0, true)
-                ));
-            }
-            if (!inputs.isEmpty()) {
-                ItemStack probe = inputs.get(0).extract(this, 0, true);
-                ItemStack coal = new ItemStack(net.minecraft.world.item.Items.COAL);
-                sb.append(String.format(
-                    "%n   [fuel probe: burnDuration(%s)=%d burnDuration(coal)=%d]", probe.getItem(),
-                    com.zurrtum.create.foundation.utility.FuelCompat.burnDuration(level, probe),
-                    com.zurrtum.create.foundation.utility.FuelCompat.burnDuration(level, coal)
-                ));
-                if (!outputs.isEmpty()) {
-                    sb.append(String.format("%n   [coal insertSim on out0=%s]", outputs.get(outputs.size() > 1 ? 1 : 0).insert(this, coal, true)));
-                }
-                for (ArmInteractionPoint o : outputs) {
-                    sb.append(String.format(
-                        "%n   [out %s %s state=%s valid=%s slots=%d insertSim=%s]", o.getType().getClass().getSimpleName(), o.getPos(),
-                        level.getBlockState(o.getPos()), o.isValid(), o.getSlotCount(this), o.insert(this, probe, true)
-                    ));
-                }
-            }
-            Create.LOGGER.info(
-                "[Create 26.3 port] arm {} search: locked={} speed={} phase={} outputs={}{}",
-                worldPosition, redstoneLocked, getSpeed(), phase, outputs.size(), sb
-            );
-        }
         if (redstoneLocked) {
             return;
         }
