@@ -2,6 +2,7 @@ package com.zurrtum.create.client.ponder.foundation.render;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.renderpearl.api.commands.RenderPass;
 import com.mojang.renderpearl.api.textures.FilterMode;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.PoseStack.Pose;
@@ -14,6 +15,8 @@ import com.zurrtum.create.client.ponder.foundation.PonderScene;
 import com.zurrtum.create.client.ponder.foundation.PonderScene.SceneTransform;
 import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import java.util.Optional;
+import java.util.OptionalDouble;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.render.TextureSetup;
 import net.minecraft.client.gui.render.pip.PictureInPictureRenderer;
@@ -75,7 +78,22 @@ public class SceneRenderer extends PictureInPictureRenderer<SceneRenderState> {
             renderState.slide(),
             renderState.finishingFlash()
         );
-        // TODO 26.3: Ponder scene feature rendering disabled (PreparedFrame.execute*(RenderPass) needs redesign)
+        RenderSystem.getModelViewStack().pushMatrix();
+        try (
+            FeatureRenderDispatcher.PreparedFrame frame = featureRenderDispatcher.prepareFrame(submitNodeStorage);
+            RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder().createRenderPass(
+                () -> "Ponder scene",
+                texture.textureView(),
+                Optional.empty(),
+                texture.depthTextureView(),
+                OptionalDouble.empty()
+            )
+        ) {
+            RenderSystem.bindDefaultUniforms(renderPass);
+            FeatureRenderDispatcher.renderAllFeatures(renderPass, frame);
+        } finally {
+            RenderSystem.getModelViewStack().popMatrix();
+        }
         scene.resetParticles();
         lighting.updateLevel(mc.level.dimensionType().cardinalLightType());
         gameRenderer.useUiLightmap = lightOption;
