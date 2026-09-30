@@ -149,6 +149,11 @@ public abstract class MinecraftMixin {
 
     @Inject(method = "tick()V", at = @At("HEAD"))
     private void tickPre(CallbackInfo ci) {
+        // Fallback: GameRendererMixin#recycleAll may not apply on 26.3 (renderLevel changed), which leaks layers.
+        // Frames are fully rendered between ticks, so recycling here is safe (idempotent).
+        com.zurrtum.create.client.catnip.render.EntityBlockLightLayer.recycleAll();
+        com.zurrtum.create.client.catnip.render.EntityBlockLayer.recycleAll();
+        com.zurrtum.create.client.catnip.render.EntityBlockMultipleLayer.recycleAll();
         Minecraft mc = (Minecraft) (Object) this;
         AnimationTickHolder.tick(mc);
         PonderTooltipHandler.tick();
