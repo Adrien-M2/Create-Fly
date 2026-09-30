@@ -28,14 +28,11 @@ public class AllPlacedFeatures {
     }
 
     public static void register(RegistryAccess registryManager) {
-        if (true) return; // TODO(26.3): worldgen (minerais) désactivé, à réécrire
         Registry<PlacedFeature> placed = registryManager.lookupOrThrow(Registries.PLACED_FEATURE);
         Holder<PlacedFeature> zincOverworld = placed.get(ZINC_ORE).orElseThrow();
-        Holder<PlacedFeature> striatedOverworld = placed.get(STRIATED_ORES_OVERWORLD).orElseThrow();
-        Holder<PlacedFeature> striatedNether = placed.get(STRIATED_ORES_NETHER).orElseThrow();
         int index = GenerationStep.Decoration.UNDERGROUND_ORES.ordinal();
-        addFeature(registryManager, LevelStem.OVERWORLD, index, List.of(zincOverworld, striatedOverworld));
-        addFeature(registryManager, LevelStem.NETHER, index, List.of(striatedNether));
+        // TODO 26.3: striated ores (LayeredOreFeature) not restored yet, only zinc
+        addFeature(registryManager, LevelStem.OVERWORLD, index, List.of(zincOverworld));
     }
 
     private static void addFeature(
@@ -71,5 +68,6 @@ public class AllPlacedFeatures {
     }
 
     public static void register() {
+        AllPlacementModifiers.register();
     }
 }
