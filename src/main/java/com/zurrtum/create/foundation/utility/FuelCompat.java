@@ -18,6 +18,12 @@ public final class FuelCompat {
 
     public static int burnDuration(ItemStack stack) {
         CookingFuel fuel = stack.get(DataComponents.COOKING_FUEL);
+        if (!stack.isEmpty() && stack.is(net.minecraft.world.item.Items.COAL)) {
+            com.zurrtum.create.Create.LOGGER.info(
+                "[Create 26.3 port] coal COOKING_FUEL={} burnTimeClass={}", fuel,
+                fuel == null ? null : fuel.burnTime().getClass()
+            );
+        }
         if (fuel == null) {
             return 0;
         }
