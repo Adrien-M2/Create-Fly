@@ -205,7 +205,7 @@ public class BlazeBurnerBlockEntity extends SmartBlockEntity {
             newBurnTime = 3200;
             newFuel = FuelType.SPECIAL;
         } else {
-            newBurnTime = FuelCompat.burnDuration(itemStack);
+            newBurnTime = FuelCompat.burnDuration(level, itemStack);
             if (newBurnTime > 0) {
                 newFuel = FuelType.NORMAL;
             } else if (itemStack.is(AllItemTags.BLAZE_BURNER_FUEL_REGULAR)) {

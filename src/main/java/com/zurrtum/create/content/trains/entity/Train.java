@@ -1233,7 +1233,7 @@ public class Train {
             MutableInt burnTime = new MutableInt();
             ItemStack extract = fuelItems.extract(
                 stack -> {
-                    int ticks = FuelCompat.burnDuration(stack);
+                    int ticks = FuelCompat.burnDuration(world, stack);
                     if (ticks > 0) {
                         burnTime.setValue(ticks);
                         return true;
