@@ -421,16 +421,16 @@ public interface ContainerExtension extends Iterable<ItemStack> {
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     default ItemStack removeMaxSize(ItemStack stack, Optional<Integer> max) {
         PatchedDataComponentMap components = stack.components;
-        components.ensureMapOwnership();
-        components.patch.remove(DataComponents.MAX_STACK_SIZE, max);
+        if (max.isPresent() && java.util.Objects.equals(components.get(DataComponents.MAX_STACK_SIZE), max.get())) {
+            components.remove(DataComponents.MAX_STACK_SIZE);
+        }
         return stack;
     }
 
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     default void setMaxSize(ItemStack stack, Optional<Integer> max) {
         PatchedDataComponentMap components = stack.components;
-        components.ensureMapOwnership();
-        components.patch.put(DataComponents.MAX_STACK_SIZE, max);
+        max.ifPresent(value -> components.set(DataComponents.MAX_STACK_SIZE, value));
     }
 
     default Stream<ItemStack> stream(@Nullable Direction side) {
