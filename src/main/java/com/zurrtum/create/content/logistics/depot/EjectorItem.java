@@ -26,20 +26,13 @@ public class EjectorItem extends BlockItem {
         if (player != null && player.isShiftKeyDown()) {
             return InteractionResult.SUCCESS;
         }
-        return super.useOn(ctx);
-    }
-
-    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
-    protected boolean legacyUpdateCustomBlockEntityTag(
-        Level world,
-        @Nullable Player player,
-        BlockPos pos,
-        ItemStack p_195943_4_
-    ) {
-        if (!world.isClientSide() && player instanceof ServerPlayer sp) {
-            sp.connection.send(new EjectorPlacementRequestPacket(pos));
+        BlockPos placePos = new net.minecraft.world.item.context.BlockPlaceContext(ctx).getClickedPos();
+        InteractionResult result = super.useOn(ctx);
+        // 26.3: BlockItem.updateCustomBlockEntityTag is static and no longer a hook
+        if (result.consumesAction() && !ctx.getLevel().isClientSide() && ctx.getPlayer() instanceof ServerPlayer sp) {
+            sp.connection.send(new EjectorPlacementRequestPacket(placePos));
         }
-        return BlockItem.updateCustomBlockEntityTag(world, player, pos, p_195943_4_);
+        return result;
     }
 
     @Override
