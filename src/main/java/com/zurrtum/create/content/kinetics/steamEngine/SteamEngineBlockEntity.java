@@ -65,13 +65,15 @@ public class SteamEngineBlockEntity extends SmartBlockEntity {
             Direction f = SteamEngineBlock.getFacing(getBlockState());
             BlockPos shaftPos = worldPosition.relative(f, 2);
             com.zurrtum.create.Create.LOGGER.info(
-                "[Create 26.3 port] engine {} facing={} tank={} shaft={} valid={} shaftBlock={} shaftBE={} eff={} boiler[active={} engines={} heat={} water={} passive={}] shaftSpeed={} shaftGenSpeed={}",
+                "[Create 26.3 port] engine {} facing={} tank={} shaft={} valid={} shaftBlock={} shaftBE={} eff={} boiler[active={} engines={} heat={} water={} passive={}] shaftSpeed={} shaftGenSpeed={} capKey={} shaftEff={} stressCap={}",
                 worldPosition, f, tank != null, shaft != null, isValid(), level.getBlockState(shaftPos), level.getBlockEntity(shaftPos),
                 tank == null ? null : tank.boiler.getEngineEfficiency(tank.getTotalTankSize()),
                 tank == null ? null : tank.boiler.isActive(), tank == null ? null : tank.boiler.attachedEngines,
                 tank == null ? null : tank.boiler.activeHeat, tank == null ? null : tank.boiler.waterSupply,
                 tank == null ? null : tank.boiler.passiveHeat,
-                shaft == null ? null : shaft.getTheoreticalSpeed(), shaft == null ? null : shaft.getGeneratedSpeed()
+                shaft == null ? null : shaft.getTheoreticalSpeed(), shaft == null ? null : shaft.getGeneratedSpeed(),
+                shaft == null ? null : shaft.capacityKey, shaft == null ? null : shaft.engineEfficiency,
+                com.zurrtum.create.api.stress.BlockStressValues.getCapacity(com.zurrtum.create.AllBlocks.STEAM_ENGINE)
             );
         }
 
