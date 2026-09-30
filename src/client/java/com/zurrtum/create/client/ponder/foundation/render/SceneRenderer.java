@@ -78,6 +78,10 @@ public class SceneRenderer extends PictureInPictureRenderer<SceneRenderState> {
             renderState.slide(),
             renderState.finishingFlash()
         );
+        DynamicTransformsHolder particle = (DynamicTransformsHolder) featureRenderDispatcher.featureRenderers.get(
+            QuadParticleFeatureRenderer.TYPE);
+        Matrix4f particleTransforms = RenderSystem.getModelViewMatrixCopy().mul(matrices.last().pose());
+        particle.ponder$updateTransforms(RenderSystem.getDynamicUniforms().writeTransform(particleTransforms));
         RenderSystem.getModelViewStack().pushMatrix();
         try (
             FeatureRenderDispatcher.PreparedFrame frame = featureRenderDispatcher.prepareFrame(submitNodeStorage);
@@ -94,6 +98,7 @@ public class SceneRenderer extends PictureInPictureRenderer<SceneRenderState> {
             frame.executeOutline(renderPass);
         } finally {
             RenderSystem.getModelViewStack().popMatrix();
+            particle.ponder$updateTransforms(null);
         }
         scene.resetParticles();
         lighting.updateLevel(mc.level.dimensionType().cardinalLightType());
