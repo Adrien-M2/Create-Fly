@@ -9,21 +9,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:stone"
-              },
+              "state": "minecraft:stone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -39,9 +32,7 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:scoria"
-              },
+              "state": "create:scoria",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -57,9 +48,7 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:blackstone"
-              },
+              "state": "minecraft:blackstone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -75,12 +64,7 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:basalt",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:basalt",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -89,9 +73,7 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:smooth_basalt"
-              },
+              "state": "minecraft:smooth_basalt",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -109,21 +91,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:stone"
-              },
+              "state": "minecraft:stone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -139,9 +114,7 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:scorchia"
-              },
+              "state": "create:scorchia",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -157,9 +130,7 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:soul_soil"
-              },
+              "state": "minecraft:soul_soil",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -168,9 +139,7 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:soul_sand"
-              },
+              "state": "minecraft:soul_sand",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -186,9 +155,7 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:magma_block"
-              },
+              "state": "minecraft:magma_block",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -204,12 +171,7 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:basalt",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:basalt",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"
@@ -218,9 +180,7 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:smooth_basalt"
-              },
+              "state": "minecraft:smooth_basalt",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:base_stone_nether"

@@ -9,18 +9,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:scoria"
-              },
+              "state": "create:scoria",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "create:scoria"
-              },
+              "state": "create:scoria",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -36,18 +32,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -56,18 +48,14 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:andesite"
-              },
+              "state": "minecraft:andesite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:andesite"
-              },
+              "state": "minecraft:andesite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -83,18 +71,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:andesite"
-              },
+              "state": "minecraft:andesite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -110,18 +94,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:diorite"
-              },
+              "state": "minecraft:diorite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:diorite"
-              },
+              "state": "minecraft:diorite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -139,18 +119,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:crimsite"
-              },
+              "state": "create:crimsite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "create:crimsite"
-              },
+              "state": "create:crimsite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -166,18 +142,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -186,24 +158,14 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -219,21 +181,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -249,18 +204,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:limestone"
-              },
+              "state": "create:limestone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "create:limestone"
-              },
+              "state": "create:limestone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -278,18 +229,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:asurine"
-              },
+              "state": "create:asurine",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "create:asurine"
-              },
+              "state": "create:asurine",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -305,18 +252,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -325,24 +268,14 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -358,21 +291,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -388,18 +314,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:calcite"
-              },
+              "state": "minecraft:calcite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:calcite"
-              },
+              "state": "minecraft:calcite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -417,18 +339,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:veridium"
-              },
+              "state": "create:veridium",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "create:veridium"
-              },
+              "state": "create:veridium",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -444,18 +362,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -464,18 +378,14 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:andesite"
-              },
+              "state": "minecraft:andesite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:andesite"
-              },
+              "state": "minecraft:andesite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -491,18 +401,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:andesite"
-              },
+              "state": "minecraft:andesite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -518,18 +424,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:smooth_basalt"
-              },
+              "state": "minecraft:smooth_basalt",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:smooth_basalt"
-              },
+              "state": "minecraft:smooth_basalt",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -547,21 +449,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:stone"
-              },
+              "state": "minecraft:stone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -577,18 +472,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:calcite"
-              },
+              "state": "minecraft:calcite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:calcite"
-              },
+              "state": "minecraft:calcite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -604,18 +495,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:diorite"
-              },
+              "state": "minecraft:diorite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:diorite"
-              },
+              "state": "minecraft:diorite",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -631,18 +518,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:limestone"
-              },
+              "state": "create:limestone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "create:limestone"
-              },
+              "state": "create:limestone",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -660,18 +543,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "create:ochrum"
-              },
+              "state": "create:ochrum",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "create:ochrum"
-              },
+              "state": "create:ochrum",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -687,18 +566,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:tuff"
-              },
+              "state": "minecraft:tuff",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -707,24 +582,14 @@
           ],
           [
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:deepslate",
-                "Properties": {
-                  "axis": "y"
-                }
-              },
+              "state": "minecraft:deepslate",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
@@ -740,18 +605,14 @@
         "targets": [
           [
             {
-              "state": {
-                "Name": "minecraft:dripstone_block"
-              },
+              "state": "minecraft:dripstone_block",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:stone_ore_replaceables"
               }
             },
             {
-              "state": {
-                "Name": "minecraft:dripstone_block"
-              },
+              "state": "minecraft:dripstone_block",
               "target": {
                 "predicate_type": "minecraft:tag_match",
                 "tag": "minecraft:deepslate_ore_replaceables"
