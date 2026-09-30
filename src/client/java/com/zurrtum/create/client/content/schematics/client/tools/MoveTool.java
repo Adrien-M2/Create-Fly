@@ -21,7 +21,6 @@ public class MoveTool extends PlacementToolBase {
 
     @Override
     public boolean handleMouseWheel(double delta) {
-        com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] MoveTool wheel delta={} schematicSelected={} face={}", delta, schematicSelected, selectedFace);
         if (!schematicSelected || !selectedFace.getAxis().isHorizontal()) {
             return true;
         }

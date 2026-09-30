@@ -105,7 +105,6 @@ public class SchematicRenderer {
         EntityBlockSbbBuilder sbbBuilder = objects.sbbBuilder;
         schematic.renderMode = true;
         ModelConsumer renderer = ModelRenderHelper.getCullHelper(sbbBuilder);
-        int dbgModel = 0, dbgTotal = 0;
         BlockModelLighter.enableCaching();
         for (BlockPos localPos : BlockPos.betweenClosed(
             bounds.minX(),
@@ -117,9 +116,7 @@ public class SchematicRenderer {
         )) {
             BlockPos pos = mutableBlockPos.setWithOffset(localPos, anchor);
             BlockState state = schematic.getBlockState(pos);
-            dbgTotal++;
             if (state.getRenderShape() == RenderShape.MODEL) {
-                dbgModel++;
                 renderer.tesselateBlock(
                     pos.getX(),
                     pos.getY(),
@@ -136,7 +133,6 @@ public class SchematicRenderer {
         schematic.renderMode = false;
 
         SuperByteBuffer buffer = sbbBuilder.build();
-        com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] Schematic redraw: {} positions, {} model blocks, buffer empty={}", dbgTotal, dbgModel, buffer.isEmpty());
         bufferCache = buffer.cardinalLighting(mc.level.cardinalLighting()).keepAlive().extractRenderState();
     }
 

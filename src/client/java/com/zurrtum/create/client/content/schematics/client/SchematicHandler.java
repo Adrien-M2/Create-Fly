@@ -294,9 +294,6 @@ public class SchematicHandler {
     }
 
     public boolean onMouseInput(Minecraft mc, int button) {
-        if (active) {
-            com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] Schematic mouse button={} tool={}", button, currentTool);
-        }
         if (!active) {
             return false;
         }
@@ -334,7 +331,6 @@ public class SchematicHandler {
     }
 
     public boolean mouseScrolled(Minecraft mc, double delta) {
-        com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] Schematic scroll delta={} active={} ctrl={}", delta, active, mc.hasControlDown());
         if (!active) {
             return false;
         }
@@ -431,7 +427,6 @@ public class SchematicHandler {
     }
 
     public void printInstantly(Minecraft mc) {
-        com.mojang.logging.LogUtils.getLogger().info("[Create 26.3 port] printInstantly item={}", activeSchematicItem);
         mc.player.connection.send(new SchematicPlacePacket(activeSchematicItem.copy()));
         activeSchematicItem.set(AllDataComponents.SCHEMATIC_DEPLOYED, false);
         SchematicInstances.clearHash(activeSchematicItem);

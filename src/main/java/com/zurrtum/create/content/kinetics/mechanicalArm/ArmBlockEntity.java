@@ -536,7 +536,6 @@ public class ArmBlockEntity extends KineticBlockEntity implements TransformableB
             }
             BlockState state = level.getBlockState(point.pos);
             if (!point.type.canCreatePoint(level, point.pos, state)) {
-                Create.LOGGER.info("[Create 26.3 port] arm {} point {} rejected (state {})", worldPosition, point.pos, state);
                 continue;
             }
             if (point.getMode() == Mode.DEPOSIT) {
@@ -547,10 +546,6 @@ public class ArmBlockEntity extends KineticBlockEntity implements TransformableB
             hasBlazeBurner |= point instanceof AllArmInteractionPointTypes.BlazeBurnerPoint;
         }
 
-        Create.LOGGER.info(
-            "[Create 26.3 port] arm {} init points: tags={} inputs={} outputs={} client={}",
-            worldPosition, interactionPointTag.size(), inputs.size(), outputs.size(), level.isClientSide()
-        );
         if (!level.isClientSide()) {
             if (outputs.size() >= 10) {
                 award(AllAdvancements.ARM_MANY_TARGETS);
