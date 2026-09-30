@@ -63,8 +63,8 @@ public class LayeredOreFeature implements Feature {
         LayerPattern layerPattern = patternPool.get(random.nextInt(patternPool.size()));
 
         int placedAmount = 0;
-        int size = size + 1;
-        float radius = size * 0.5f;
+        int size = this.size + 1;
+        float radius = this.size * 0.5f;
         int radiusBound = Mth.ceil(radius) - 1;
         int x0 = origin.getX();
         int y0 = origin.getY();
