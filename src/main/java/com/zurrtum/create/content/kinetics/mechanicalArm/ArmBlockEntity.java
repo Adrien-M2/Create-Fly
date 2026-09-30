@@ -281,6 +281,15 @@ public class ArmBlockEntity extends KineticBlockEntity implements TransformableB
                     p.extract(this, 0, true)
                 ));
             }
+            if (!inputs.isEmpty()) {
+                ItemStack probe = inputs.get(0).extract(this, 0, true);
+                for (ArmInteractionPoint o : outputs) {
+                    sb.append(String.format(
+                        "%n   [out %s %s state=%s valid=%s slots=%d insertSim=%s]", o.getType().getClass().getSimpleName(), o.getPos(),
+                        level.getBlockState(o.getPos()).getBlock(), o.isValid(), o.getSlotCount(this), o.insert(this, probe, true)
+                    ));
+                }
+            }
             Create.LOGGER.info(
                 "[Create 26.3 port] arm {} search: locked={} speed={} phase={} outputs={}{}",
                 worldPosition, redstoneLocked, getSpeed(), phase, outputs.size(), sb
