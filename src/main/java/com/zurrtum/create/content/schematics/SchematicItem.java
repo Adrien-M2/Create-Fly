@@ -159,6 +159,16 @@ public class SchematicItem extends Item {
             CompoundTag nbt = NbtIo.read(stream, NbtAccounter.create(0x20000000L));
             upgradeLegacyPalettes(nbt);
             t.load(level.holderLookup(Registries.BLOCK), nbt);
+            try {
+                java.util.List<StructureTemplate.StructureBlockInfo> dbg = t.filterBlocks(
+                    net.minecraft.core.BlockPos.ZERO,
+                    new net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlaceSettings(),
+                    net.minecraft.world.level.block.Blocks.POINTED_DRIPSTONE
+                );
+                LOGGER.info("[Create 26.3 port] loaded dripstone infos: {} first={}", dbg.size(), dbg.isEmpty() ? null : dbg.get(0).state());
+            } catch (Throwable e) {
+                LOGGER.info("[Create 26.3 port] dripstone debug failed: {}", e.toString());
+            }
         } catch (IOException e) {
             LOGGER.warn("Failed to read schematic", e);
         }
