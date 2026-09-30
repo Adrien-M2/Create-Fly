@@ -118,11 +118,20 @@ public class SchematicItem extends Item {
             if (entry instanceof net.minecraft.nbt.CompoundTag dbg && String.valueOf(dbg).contains("pointed_dripstone")) {
                 LOGGER.info("[Create 26.3 port] palette entry (dripstone): {}", dbg);
             }
-            if (entry instanceof net.minecraft.nbt.CompoundTag compound && compound.get("id") == null) {
-                net.minecraft.nbt.Tag name = compound.get("Name");
-                if (name != null) {
-                    compound.remove("Name");
-                    compound.put("id", name);
+            if (entry instanceof net.minecraft.nbt.CompoundTag compound) {
+                if (compound.get("id") == null) {
+                    net.minecraft.nbt.Tag name = compound.get("Name");
+                    if (name != null) {
+                        compound.remove("Name");
+                        compound.put("id", name);
+                    }
+                }
+                if (compound.get("properties") == null) {
+                    net.minecraft.nbt.Tag properties = compound.get("Properties");
+                    if (properties != null) {
+                        compound.remove("Properties");
+                        compound.put("properties", properties);
+                    }
                 }
             }
         }

@@ -92,6 +92,7 @@ public class CreateCodecs {
             converted.put(ops.createString("id"), name);
             T properties = map.get().get("Properties");
             if (properties != null) {
+                converted.put(ops.createString("properties"), properties);
                 converted.put(ops.createString("Properties"), properties);
             }
             return BlockState.CODEC.decode(ops, ops.createMap(converted));
