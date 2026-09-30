@@ -90,16 +90,7 @@ public class ItemInHandRendererMixin {
         );
     }
 
-    @WrapOperation(method = "renderMapHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/ClientAsset$Texture;texturePath()Lnet/minecraft/resources/Identifier;"))
-    private Identifier getMapHandTexture(ClientAsset.Texture instance, Operation<Identifier> original) {
-        Identifier id = NetheriteBacktankFirstPersonRenderer.getHandTexture(Minecraft.getInstance().player);
-        if (id != null) {
-            return id;
-        }
-        return original.call(instance);
-    }
-
-    @WrapOperation(method = "renderPlayerArm", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/ClientAsset$Texture;texturePath()Lnet/minecraft/resources/Identifier;"))
+    @WrapOperation(method = "renderPlayerHand", at = @At(value = "INVOKE", target = "Lnet/minecraft/core/ClientAsset$Texture;texturePath()Lnet/minecraft/resources/Identifier;"))
     private Identifier getHandTexture(ClientAsset.Texture instance, Operation<Identifier> original) {
         Identifier id = NetheriteBacktankFirstPersonRenderer.getHandTexture(Minecraft.getInstance().player);
         if (id != null) {
