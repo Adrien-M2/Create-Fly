@@ -8,6 +8,11 @@ import com.mojang.renderpearl.api.textures.GpuTextureView;
 import net.minecraft.client.gui.render.GuiRenderer;
 import net.minecraft.client.renderer.Projection;
 import net.minecraft.client.renderer.ProjectionMatrixBuffer;
+import net.minecraft.client.renderer.SubmitNodeStorage;
+import net.minecraft.client.renderer.feature.FeatureRenderDispatcher;
+import com.mojang.renderpearl.api.commands.RenderPass;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 public record GpuTexture(int width, int height, com.mojang.renderpearl.api.textures.GpuTexture texture,
                          GpuTextureView textureView, com.mojang.renderpearl.api.textures.GpuTexture depthTexture,
@@ -52,6 +57,26 @@ public record GpuTexture(int width, int height, com.mojang.renderpearl.api.textu
         RenderSystem.setProjectionMatrix(projectionMatrixBuffer.getBuffer(projection), ProjectionType.ORTHOGRAPHIC);
         // TODO 26.3: RenderSystem.outputColorTextureOverride = textureView;
         // TODO 26.3: RenderSystem.outputDepthTextureOverride = depthTextureView;
+    }
+
+    public void renderFeatures(FeatureRenderDispatcher dispatcher, SubmitNodeStorage storage) {
+        renderFeatures(textureView, depthTextureView, dispatcher, storage);
+    }
+
+    public static void renderFeatures(
+        GpuTextureView color,
+        GpuTextureView depth,
+        FeatureRenderDispatcher dispatcher,
+        SubmitNodeStorage storage
+    ) {
+        try (
+            FeatureRenderDispatcher.PreparedFrame frame = dispatcher.prepareFrame(storage);
+            RenderPass renderPass = RenderSystem.getDevice().createCommandEncoder()
+                .createRenderPass(() -> "Create GUI element", color, Optional.empty(), depth, OptionalDouble.empty())
+        ) {
+            RenderSystem.bindDefaultUniforms(renderPass);
+            FeatureRenderDispatcher.renderAllFeatures(renderPass, frame);
+        }
     }
 
     public void clear() {

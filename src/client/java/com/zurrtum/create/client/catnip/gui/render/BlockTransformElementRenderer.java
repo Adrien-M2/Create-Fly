@@ -78,7 +78,7 @@ public class BlockTransformElementRenderer extends PictureInPictureRenderer<Bloc
             matrices.translate(-0.5F, -0.5F, -0.5F);
             CachedBuffers.block(key.state).submit(matrices, submitNodeStorage);
             matrices.popPose();
-            // TODO 26.3: renderAllFeatures(RenderPass, PreparedFrame) - offscreen GUI block rendering disabled
+            texture.renderFeatures(featureRenderDispatcher, submitNodeStorage);
             texture.clear();
         }
         state.addBlitToCurrentLayer(new BlitRenderState(

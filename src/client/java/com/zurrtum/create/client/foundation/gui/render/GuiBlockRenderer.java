@@ -56,7 +56,7 @@ public abstract class GuiBlockRenderer<T extends PictureInPictureRenderState> ex
         Lighting lighting = mc.gameRenderer.lighting();
         lighting.updateBuffer(Lighting.Entry.LEVEL, getLight0(), getLight1());
         lighting.setupFor(Lighting.Entry.LEVEL);
-        // TODO 26.3: renderAllFeatures(RenderPass, PreparedFrame) - offscreen GUI block rendering disabled
+        com.zurrtum.create.client.catnip.gui.render.GpuTexture.renderFeatures(textureView, depthTextureView, featureRenderDispatcher, submitNodeStorage);
         if (mc.level != null) {
             lighting.updateLevel(mc.level.dimensionType().cardinalLightType());
         } else {

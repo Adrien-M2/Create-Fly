@@ -102,7 +102,7 @@ public class EntityBlockRenderer extends PictureInPictureRenderer<EntityBlockRen
             }
         }
         matrices.popPose();
-        // TODO 26.3: renderAllFeatures(RenderPass, PreparedFrame) - offscreen GUI block rendering disabled
+        texture.renderFeatures(featureRenderDispatcher, submitNodeStorage);
         gameRenderer.useUiLightmap = lightOption;
         texture.clear();
         state.addBlitToCurrentLayer(new BlitRenderState(
