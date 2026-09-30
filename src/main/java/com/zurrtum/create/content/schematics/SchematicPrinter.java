@@ -46,7 +46,7 @@ public class SchematicPrinter {
     public enum PrintStage implements StringRepresentable {
         BLOCKS, DEFERRED_BLOCKS, ENTITIES;
 
-        public static final Codec<PrintStage> CODEC = StringRepresentable.fromEnum(PrintStage::values);
+        public static final Codec<PrintStage> CODEC = com.zurrtum.create.foundation.codec.LenientEnumCodec.create(PrintStage::values);
 
         @Override
         public String getSerializedName() {

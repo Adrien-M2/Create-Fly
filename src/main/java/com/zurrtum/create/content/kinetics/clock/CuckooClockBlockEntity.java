@@ -34,7 +34,7 @@ public class CuckooClockBlockEntity extends KineticBlockEntity {
 
     public enum Animation implements StringRepresentable {
         PIG, CREEPER, SURPRISE, NONE;
-        public static final Codec<Animation> CODEC = StringRepresentable.fromEnum(Animation::values);
+        public static final Codec<Animation> CODEC = com.zurrtum.create.foundation.codec.LenientEnumCodec.create(Animation::values);
 
         @Override
         public String getSerializedName() {

@@ -74,7 +74,7 @@ public class DeployerBlockEntity extends KineticBlockEntity implements Clearable
     public enum State implements StringRepresentable {
         WAITING, EXPANDING, RETRACTING, DUMPING;
 
-        public static final Codec<State> CODEC = StringRepresentable.fromEnum(State::values);
+        public static final Codec<State> CODEC = com.zurrtum.create.foundation.codec.LenientEnumCodec.create(State::values);
 
         @Override
         public String getSerializedName() {
@@ -85,7 +85,7 @@ public class DeployerBlockEntity extends KineticBlockEntity implements Clearable
     public enum Mode implements StringRepresentable {
         PUNCH, USE;
 
-        public static final Codec<Mode> CODEC = StringRepresentable.fromEnum(Mode::values);
+        public static final Codec<Mode> CODEC = com.zurrtum.create.foundation.codec.LenientEnumCodec.create(Mode::values);
 
         @Override
         public String getSerializedName() {

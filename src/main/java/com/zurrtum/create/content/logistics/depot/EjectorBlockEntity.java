@@ -75,7 +75,7 @@ public class EjectorBlockEntity extends KineticBlockEntity {
     public enum State implements StringRepresentable {
         CHARGED, LAUNCHING, RETRACTING;
 
-        public static final Codec<State> CODEC = StringRepresentable.fromEnum(State::values);
+        public static final Codec<State> CODEC = com.zurrtum.create.foundation.codec.LenientEnumCodec.create(State::values);
 
         @Override
         public String getSerializedName() {

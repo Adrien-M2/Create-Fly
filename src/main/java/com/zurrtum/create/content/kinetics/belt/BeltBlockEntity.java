@@ -62,7 +62,7 @@ public class BeltBlockEntity extends KineticBlockEntity implements Clearable {
     public enum CasingType implements StringRepresentable {
         NONE, ANDESITE, BRASS;
 
-        public static final Codec<CasingType> CODEC = StringRepresentable.fromEnum(CasingType::values);
+        public static final Codec<CasingType> CODEC = com.zurrtum.create.foundation.codec.LenientEnumCodec.create(CasingType::values);
 
         @Override
         public String getSerializedName() {

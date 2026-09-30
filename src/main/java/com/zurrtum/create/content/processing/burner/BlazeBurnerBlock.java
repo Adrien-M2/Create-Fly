@@ -317,7 +317,7 @@ public class BlazeBurnerBlock extends HorizontalDirectionalBlock implements IBE<
     public enum HeatLevel implements StringRepresentable {
         NONE, SMOULDERING, FADING, KINDLED, SEETHING;
 
-        public static final Codec<HeatLevel> CODEC = StringRepresentable.fromEnum(HeatLevel::values);
+        public static final Codec<HeatLevel> CODEC = com.zurrtum.create.foundation.codec.LenientEnumCodec.create(HeatLevel::values);
 
         public static HeatLevel byIndex(int index) {
             return values()[index];

@@ -101,11 +101,44 @@ public class SchematicItem extends Item {
      * are not run through the DataFixer here, so rename the palette keys ourselves.
      */
     public static void upgradeLegacyPalettes(net.minecraft.nbt.CompoundTag nbt) {
+        net.minecraft.nbt.Tag blocks = nbt.get("blocks");
+        if (blocks instanceof net.minecraft.nbt.ListTag blockList) {
+            for (net.minecraft.nbt.Tag block : blockList) {
+                if (block instanceof net.minecraft.nbt.CompoundTag c && c.get("nbt") != null) {
+                    upgradeLegacyBlockPos(c.get("nbt"));
+                }
+            }
+        }
         upgradePalette(nbt.get("palette"));
         net.minecraft.nbt.Tag palettes = nbt.get("palettes");
         if (palettes instanceof net.minecraft.nbt.ListTag list) {
             for (net.minecraft.nbt.Tag palette : list) {
                 upgradePalette(palette);
+            }
+        }
+    }
+
+    /** Legacy block positions were stored as {X:,Y:,Z:} compounds; 26.3 codecs expect int arrays. */
+    private static void upgradeLegacyBlockPos(net.minecraft.nbt.Tag tag) {
+        if (tag instanceof net.minecraft.nbt.CompoundTag compound) {
+            for (String key : new java.util.ArrayList<>(compound.keySet())) {
+                net.minecraft.nbt.Tag child = compound.get(key);
+                if (child instanceof net.minecraft.nbt.CompoundTag c && c.size() == 3 && c.get("X") instanceof net.minecraft.nbt.NumericTag x
+                    && c.get("Y") instanceof net.minecraft.nbt.NumericTag y && c.get("Z") instanceof net.minecraft.nbt.NumericTag z) {
+                    compound.put(key, new net.minecraft.nbt.IntArrayTag(new int[]{x.intValue(), y.intValue(), z.intValue()}));
+                } else {
+                    upgradeLegacyBlockPos(child);
+                }
+            }
+        } else if (tag instanceof net.minecraft.nbt.ListTag list) {
+            for (int i = 0; i < list.size(); i++) {
+                net.minecraft.nbt.Tag child = list.get(i);
+                if (child instanceof net.minecraft.nbt.CompoundTag c && c.size() == 3 && c.get("X") instanceof net.minecraft.nbt.NumericTag x
+                    && c.get("Y") instanceof net.minecraft.nbt.NumericTag y && c.get("Z") instanceof net.minecraft.nbt.NumericTag z) {
+                    list.set(i, new net.minecraft.nbt.IntArrayTag(new int[]{x.intValue(), y.intValue(), z.intValue()}));
+                } else {
+                    upgradeLegacyBlockPos(child);
+                }
             }
         }
     }
