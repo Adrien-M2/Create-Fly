@@ -270,7 +270,22 @@ public class ArmBlockEntity extends KineticBlockEntity implements TransformableB
         return null;
     }
 
+    private int devLogCounter;
+
     protected void searchForItem() {
+        if (++devLogCounter % 100 == 1) {
+            StringBuilder sb = new StringBuilder();
+            for (ArmInteractionPoint p : inputs) {
+                sb.append(String.format(
+                    " [in %s %s valid=%s slots=%d extract=%s]", p.getType(), p.getPos(), p.isValid(), p.getSlotCount(this),
+                    p.extract(this, 0, true)
+                ));
+            }
+            Create.LOGGER.info(
+                "[Create 26.3 port] arm {} search: locked={} speed={} phase={} outputs={}{}",
+                worldPosition, redstoneLocked, getSpeed(), phase, outputs.size(), sb
+            );
+        }
         if (redstoneLocked) {
             return;
         }
