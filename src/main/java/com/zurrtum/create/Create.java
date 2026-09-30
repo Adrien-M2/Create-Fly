@@ -53,6 +53,9 @@ public class Create implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        // 26.3: the BlocksMixin injection into Blocks.<clinit> may not apply anymore; AllBlocks.init() also
+        // registers the stress values in CStress, which AllConfigs.register() needs. It is idempotent.
+        AllBlocks.init();
         if (Lazy) {
             register();
         }
