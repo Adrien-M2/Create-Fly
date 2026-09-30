@@ -32,7 +32,14 @@ public class ArmInteractionPoint {
         return RecordCodecBuilder.create(instance -> instance.group(
             CreateRegistries.ARM_INTERACTION_POINT_TYPE.byNameCodec().fieldOf("Type")
                 .forGetter(ArmInteractionPoint::getType),
-            BlockPos.CODEC.fieldOf("Pos").forGetter(point -> point.pos.subtract(anchor)),
+            com.mojang.serialization.Codec.either(
+                BlockPos.CODEC,
+                com.mojang.serialization.codecs.RecordCodecBuilder.<BlockPos>create(i -> i.group(
+                    com.mojang.serialization.Codec.INT.fieldOf("X").forGetter(BlockPos::getX),
+                    com.mojang.serialization.Codec.INT.fieldOf("Y").forGetter(BlockPos::getY),
+                    com.mojang.serialization.Codec.INT.fieldOf("Z").forGetter(BlockPos::getZ)
+                ).apply(i, BlockPos::new))
+            ).xmap(e -> e.map(p -> p, p -> p), com.mojang.datafixers.util.Either::left).fieldOf("Pos").forGetter(point -> point.pos.subtract(anchor)),
             Mode.CODEC.fieldOf("Mode").forGetter(ArmInteractionPoint::getMode)
         ).apply(
             instance, (type, pos, mode) -> {
