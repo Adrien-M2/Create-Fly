@@ -34,6 +34,7 @@ public class FluidTankItem extends BlockItem {
 
     @Override
     public InteractionResult place(BlockPlaceContext ctx) {
+        sanitizeStackData(ctx.getLevel(), ctx.getItemInHand());
         InteractionResult initialResult = super.place(ctx);
         if (!initialResult.consumesAction()) {
             return initialResult;
@@ -42,16 +43,11 @@ public class FluidTankItem extends BlockItem {
         return initialResult;
     }
 
-    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
-    protected boolean legacyUpdateCustomBlockEntityTag(
-        Level level,
-        @Nullable Player player,
-        BlockPos blockPos,
-        ItemStack itemStack
-    ) {
+    // 26.3: BlockItem.updateCustomBlockEntityTag is static now; the stack data cleanup runs before super.place() instead.
+    private void sanitizeStackData(Level level, ItemStack itemStack) {
         MinecraftServer minecraftserver = level.getServer();
         if (minecraftserver == null) {
-            return false;
+            return;
         }
         TypedEntityData<BlockEntityType<?>> data = itemStack.get(DataComponents.BLOCK_ENTITY_DATA);
         if (data != null) {
@@ -73,7 +69,6 @@ public class FluidTankItem extends BlockItem {
                 TypedEntityData.of(((IBE<?>) getBlock()).getBlockEntityType(), nbt)
             );
         }
-        return BlockItem.updateCustomBlockEntityTag(level, player, blockPos, itemStack);
     }
 
     private void tryMultiPlace(BlockPlaceContext ctx) {

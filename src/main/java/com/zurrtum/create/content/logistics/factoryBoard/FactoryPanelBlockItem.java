@@ -42,17 +42,8 @@ public class FactoryPanelBlockItem extends LogisticallyLinkedBlockItem {
             return InteractionResult.FAIL;
         }
 
+        fixCtrlCopiedStack(stack);
         return super.place(pContext);
-    }
-
-    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
-    protected boolean legacyUpdateCustomBlockEntityTag(
-        Level level,
-        @Nullable Player player,
-        BlockPos pos,
-        ItemStack stack
-    ) {
-        return BlockItem.updateCustomBlockEntityTag(level, player, pos, fixCtrlCopiedStack(stack));
     }
 
     public static ItemStack fixCtrlCopiedStack(ItemStack stack) {
