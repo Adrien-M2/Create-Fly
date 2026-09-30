@@ -286,7 +286,7 @@ public class ArmBlockEntity extends KineticBlockEntity implements TransformableB
                 for (ArmInteractionPoint o : outputs) {
                     sb.append(String.format(
                         "%n   [out %s %s state=%s valid=%s slots=%d insertSim=%s]", o.getType().getClass().getSimpleName(), o.getPos(),
-                        level.getBlockState(o.getPos()).getBlock(), o.isValid(), o.getSlotCount(this), o.insert(this, probe, true)
+                        level.getBlockState(o.getPos()), o.isValid(), o.getSlotCount(this), o.insert(this, probe, true)
                     ));
                 }
             }
