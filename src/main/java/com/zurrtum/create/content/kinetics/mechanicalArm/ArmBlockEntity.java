@@ -283,6 +283,15 @@ public class ArmBlockEntity extends KineticBlockEntity implements TransformableB
             }
             if (!inputs.isEmpty()) {
                 ItemStack probe = inputs.get(0).extract(this, 0, true);
+                ItemStack coal = new ItemStack(net.minecraft.world.item.Items.COAL);
+                sb.append(String.format(
+                    "%n   [fuel probe: burnDuration(%s)=%d burnDuration(coal)=%d]", probe.getItem(),
+                    com.zurrtum.create.foundation.utility.FuelCompat.burnDuration(probe),
+                    com.zurrtum.create.foundation.utility.FuelCompat.burnDuration(coal)
+                ));
+                if (!outputs.isEmpty()) {
+                    sb.append(String.format("%n   [coal insertSim on out0=%s]", outputs.get(outputs.size() > 1 ? 1 : 0).insert(this, coal, true)));
+                }
                 for (ArmInteractionPoint o : outputs) {
                     sb.append(String.format(
                         "%n   [out %s %s state=%s valid=%s slots=%d insertSim=%s]", o.getType().getClass().getSimpleName(), o.getPos(),
