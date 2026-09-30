@@ -55,6 +55,7 @@ public class ClipboardScreen extends AbstractSimiScreen {
     List<ClipboardEntry> currentEntries;
     int editingIndex;
     int frameTick;
+    boolean textInputActive;
     PageButton forward;
     PageButton backward;
     int currentPage;
@@ -155,8 +156,21 @@ public class ClipboardScreen extends AbstractSimiScreen {
         return pages.size();
     }
 
+    /**
+     * 26.3: text input (SDL) must be started explicitly while a text field is being edited, otherwise no
+     * character events are sent. Vanilla EditBox does this in setFocused.
+     */
+    private void syncTextInput() {
+        boolean editing = editingIndex != -1;
+        if (editing != textInputActive && minecraft != null) {
+            textInputActive = editing;
+            minecraft.textInputManager().onTextInputFocusChange(this, editing);
+        }
+    }
+
     @Override
     public void tick() {
+        syncTextInput();
         super.tick();
         frameTick++;
 
@@ -355,6 +369,10 @@ public class ClipboardScreen extends AbstractSimiScreen {
 
     @Override
     public void removed() {
+        if (textInputActive && minecraft != null) {
+            textInputActive = false;
+            minecraft.textInputManager().onTextInputFocusChange(this, false);
+        }
         pages.forEach(list -> list.removeIf(ce -> ce.text.getString().isBlank()));
         pages.removeIf(List::isEmpty);
 
@@ -396,7 +414,6 @@ public class ClipboardScreen extends AbstractSimiScreen {
     @Override
     public boolean keyPressed(KeyEvent input) {
         int pKeyCode = input.key();
-        com.zurrtum.create.Create.LOGGER.info("[Create 26.3 port] Clipboard keyPressed key={} editingIndex={}", pKeyCode, editingIndex);
         if (pKeyCode == 266) {
             backward.onPress(input);
             return true;
@@ -417,14 +434,6 @@ public class ClipboardScreen extends AbstractSimiScreen {
     @Override
     public boolean charTyped(CharacterEvent input) {
         boolean superResult = super.charTyped(input);
-        com.zurrtum.create.Create.LOGGER.info(
-            "[Create 26.3 port] Clipboard charTyped '{}' super={} allowed={} editingIndex={} focused={}",
-            input.codepointAsString(),
-            superResult,
-            input.isAllowedChatCharacter(),
-            editingIndex,
-            getFocused()
-        );
         if (superResult) {
             return true;
         }
