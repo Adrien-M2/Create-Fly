@@ -48,7 +48,7 @@ public class NoiseTextures {
             texture = device.createTexture(
                 () -> "Flywheel Blue Noise",
                 5,
-                GpuFormat.R8_UNORM,
+                GpuFormat.RGBA8_UNORM,
                 pixels.getWidth(),
                 pixels.getHeight(),
                 1,
