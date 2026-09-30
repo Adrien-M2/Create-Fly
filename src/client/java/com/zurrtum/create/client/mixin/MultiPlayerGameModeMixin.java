@@ -265,5 +265,4 @@ public class MultiPlayerGameModeMixin {
         }
         return original.call(world, pos, blockState, updateFlags);
     }
-    // TODO 26.3: hit sound of SoundControlBlock (copycat) - continueDestroyBlock no longer calls BlockState.getSoundType(); find new location.
 }
