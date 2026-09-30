@@ -206,12 +206,12 @@ public abstract class LivingEntityMixin extends Entity {
         return false;
     }
 
-    @Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Z)V", at = @At("HEAD"), cancellable = true)
-    private void swingHand(InteractionHand hand, boolean sendToSwingingEntity, CallbackInfo ci) {
+    @Inject(method = "swing(Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/component/SwingAnimation;Z)Z", at = @At("HEAD"), cancellable = true)
+    private void swingHand(InteractionHand hand, net.minecraft.world.item.component.SwingAnimation animation, boolean sendToSwingingEntity, CallbackInfoReturnable<Boolean> ci) {
         ItemStack stack = getItemInHand(hand);
         if (stack.getItem() instanceof SwingControlItem item) {
             if (item.onEntitySwing(stack, (LivingEntity) (Object) this, hand)) {
-                ci.cancel();
+                ci.setReturnValue(false);
             }
         }
     }
