@@ -51,6 +51,8 @@
     "PlayerMixin",
     "RailStateMixin",
     "RecipeManagerMixin",
+    "RecipeMapInvoker",
+    "RecipeMapMixin",
     "RedStoneWireBlockMixin",
     "ReloadableServerResourcesMixin",
     "ServerConfigurationPacketListenerImplMixin",
