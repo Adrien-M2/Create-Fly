@@ -6,10 +6,9 @@ import com.zurrtum.create.content.kinetics.base.IRotate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -28,14 +27,14 @@ public class VerticalGearboxItem extends BlockItem {
     public void registerBlocks(Map<Block, Item> p_195946_1_, Item p_195946_2_) {
     }
 
-    // TODO(26.3): BlockItem.updateCustomBlockEntityTag est devenu static -> plus appelée. Logique à rebrancher sur un autre point d\'entrée.
-    protected boolean legacyUpdateCustomBlockEntityTag(
-        Level world,
-        @Nullable Player player,
-        BlockPos pos,
-        ItemStack stack
-    ) {
-        BlockState state = world.getBlockState(pos);
+    @Override
+    protected @Nullable BlockState getPlacementState(BlockPlaceContext context) {
+        BlockState state = super.getPlacementState(context);
+        if (state == null || !state.hasProperty(BlockStateProperties.AXIS)) {
+            return state;
+        }
+        Level world = context.getLevel();
+        BlockPos pos = context.getClickedPos();
         Axis prefferedAxis = null;
         for (Direction side : Iterate.horizontalDirections) {
             BlockState blockState = world.getBlockState(pos.relative(side));
@@ -55,10 +54,9 @@ public class VerticalGearboxItem extends BlockItem {
             }
         }
 
-        Axis axis = prefferedAxis == null ? player.getDirection().getClockWise().getAxis() :
+        Axis axis = prefferedAxis == null ? context.getHorizontalDirection().getClockWise().getAxis() :
             prefferedAxis == Axis.X ? Axis.Z : Axis.X;
-        world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.AXIS, axis));
-        return BlockItem.updateCustomBlockEntityTag(world, player, pos, stack);
+        return state.setValue(BlockStateProperties.AXIS, axis);
     }
 
 }
