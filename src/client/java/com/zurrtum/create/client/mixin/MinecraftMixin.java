@@ -130,7 +130,7 @@ public abstract class MinecraftMixin {
         FlwImpl.freezeRegistries();
     }
 
-    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/platform/Window;updateRawMouseInput(Z)V"))
+    @Inject(method = "<init>", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/Gui;registerReloadListeners"))
     private void register(GameConfig gameConfig, CallbackInfo ci) {
         if (RenderSystem.getDevice().getDeviceInfo().backendName().equals("OpenGL")) {
             resourceManager.registerReloadListener(FlwProgramsReloader.INSTANCE);

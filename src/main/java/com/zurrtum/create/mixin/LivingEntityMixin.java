@@ -135,7 +135,7 @@ public abstract class LivingEntityMixin extends Entity {
         }
     }
 
-    @WrapOperation(method = "drop(Lnet/minecraft/world/item/ItemStack;ZZ)Lnet/minecraft/world/entity/item/ItemEntity;", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z"))
+    @WrapOperation(method = "drop(Lnet/minecraft/world/item/ItemStack;ZLnet/minecraft/util/Prediction;)Lnet/minecraft/world/entity/item/ItemEntity;", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z"))
     private boolean captureDrops(Level world, Entity entity, Operation<Boolean> original) {
         if (AllSynchedDatas.CRUSH_DROP.get(this)) {
             entity.setDeltaMovement(Vec3.ZERO);
