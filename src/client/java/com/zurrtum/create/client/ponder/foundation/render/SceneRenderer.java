@@ -91,6 +91,7 @@ public class SceneRenderer extends PictureInPictureRenderer<SceneRenderState> {
         ) {
             RenderSystem.bindDefaultUniforms(renderPass);
             FeatureRenderDispatcher.renderAllFeatures(renderPass, frame);
+            frame.executeOutline(renderPass);
         } finally {
             RenderSystem.getModelViewStack().popMatrix();
         }
