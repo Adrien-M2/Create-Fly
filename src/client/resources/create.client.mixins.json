@@ -1,5 +1,5 @@
 {
-  "required": false,
+  "required": true,
   "package": "com.zurrtum.create.client.mixin",
   "compatibilityLevel": "JAVA_25",
   "client": [
@@ -71,6 +71,6 @@
   ],
   "plugin": "com.zurrtum.create.client.mixin.MixinPlugin",
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 0
   }
 }

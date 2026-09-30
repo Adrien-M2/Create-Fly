@@ -1,5 +1,5 @@
 {
-  "required": false,
+  "required": true,
   "package": "com.zurrtum.create.mixin",
   "compatibilityLevel": "JAVA_25",
   "mixins": [
@@ -75,7 +75,7 @@
   "plugin": "com.zurrtum.create.mixin.MixinPlugin",
   "injectors": {
     "maxShiftBy": 2,
-    "defaultRequire": 1
+    "defaultRequire": 0
   },
   "mixinextras": {"minVersion": "0.5.0-beta.1"}
 }
