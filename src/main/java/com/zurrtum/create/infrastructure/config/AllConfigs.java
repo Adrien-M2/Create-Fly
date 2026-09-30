@@ -30,6 +30,7 @@ public class AllConfigs {
         CStress stress = server().kinetics.stressValues;
         BlockStressValues.IMPACTS.registerProvider(stress::getImpact);
         BlockStressValues.CAPACITIES.registerProvider(stress::getCapacity);
+        com.zurrtum.create.Create.LOGGER.info("[Create 26.3 port] CStress at register: {}", stress.debugInfo());
     }
 
     private static class ReloadListener extends CreateResourceReloader {
@@ -41,6 +42,7 @@ public class AllConfigs {
         public void onResourceManagerReload(ResourceManager manager) {
             ServerConfigPacket.CACHE = null;
             server.reload(null);
+            com.zurrtum.create.Create.LOGGER.info("[Create 26.3 port] CStress after reload: {}", server.kinetics.stressValues.debugInfo());
         }
     }
 }

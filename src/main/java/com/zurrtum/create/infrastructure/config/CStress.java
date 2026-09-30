@@ -54,6 +54,12 @@ public class CStress extends ConfigBase {
         builder.pop();
     }
 
+    public String debugInfo() {
+        DoubleRawValue engine = capacities.get(net.minecraft.resources.Identifier.parse("create:steam_engine"));
+        return "defaultCapacities=" + DEFAULT_CAPACITIES.size() + " defaultImpacts=" + DEFAULT_IMPACTS.size() + " capacities=" + capacities.size()
+            + " impacts=" + impacts.size() + " steamEngine=" + (engine == null ? null : engine.get());
+    }
+
     @Override
     public String getName() {
         return "stressValues.v" + VERSION;
