@@ -27,16 +27,8 @@ import java.util.stream.Stream;
 
 @Mixin(RecipeManager.class)
 public class RecipeManagerMixin {
-    @Inject(method = "prepare(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Lnet/minecraft/world/item/crafting/RecipeMap;", at = @At(value = "INVOKE", target = "Ljava/util/SortedMap;size()I"))
-    private void addSequencedAssemblyRecipe(
-        ResourceManager manager,
-        ProfilerFiller profiler,
-        CallbackInfoReturnable<RecipeMap> cir,
-        @Local SortedMap<Identifier, Recipe<?>> recipes
-    ) {
-        recipes.putAll(SequencedAssemblyRecipe.GENERATE_RECIPES);
-        PotionRecipe.register(recipes);
-    }
+    // TODO(26.3): RecipeManager.prepare() n'existe plus (recettes chargees via le registre Registries.RECIPE).
+    // Injection de SequencedAssemblyRecipe.GENERATE_RECIPES desactivee en attendant un point d'accroche sur RecipeMap.create.
 
     @WrapOperation(method = "finalizeRecipeLoading(Lnet/minecraft/world/flag/FeatureFlagSet;)V", at = @At(value = "INVOKE", target = "Ljava/util/Set;stream()Ljava/util/stream/Stream;"))
     public Stream<Entry<ResourceKey<RecipePropertySet>, IngredientExtractor>> registerRecipeSet(
