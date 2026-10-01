@@ -42,6 +42,36 @@ public class GeneratedRecipes {
             byType.put(holder.value().getType(), holder);
             keyed.put(holder.id(), holder);
         }
-        return RecipeMapInvoker.create$new(byType.build(), keyed.build());
+        RecipeMap merged = RecipeMapInvoker.create$new(byType.build(), keyed.build());
+        copyFabricSyncData(original, merged);
+        return merged;
+    }
+
+    private static final java.lang.reflect.Field FABRIC_SYNCED_SERIALIZERS = findFabricField();
+
+    private static java.lang.reflect.Field findFabricField() {
+        try {
+            java.lang.reflect.Field field = RecipeMap.class.getDeclaredField("bySyncedSerializer");
+            field.setAccessible(true);
+            return field;
+        } catch (ReflectiveOperationException | RuntimeException e) {
+            // Fabric API recipe sync is not installed
+            return null;
+        }
+    }
+
+    /**
+     * Fabric API (recipe sync) attaches a field to the RecipeMap built by RecipeMap.create. A map built through the
+     * constructor does not get it, which crashes the player login, so it is carried over from the original map.
+     */
+    private static void copyFabricSyncData(RecipeMap from, RecipeMap to) {
+        if (FABRIC_SYNCED_SERIALIZERS == null) {
+            return;
+        }
+        try {
+            FABRIC_SYNCED_SERIALIZERS.set(to, FABRIC_SYNCED_SERIALIZERS.get(from));
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException("Could not copy Fabric recipe sync data", e);
+        }
     }
 }
