@@ -46,16 +46,6 @@ public final class GlCompat {
     public static final boolean SUPPORTS_INSTANCING = SUPPORTS_OPENGL && isInstancingSupported();
     public static final boolean SUPPORTS_INDIRECT = SUPPORTS_OPENGL && isIndirectSupported();
 
-    static {
-        FlwBackend.LOGGER.info(
-            "[Create 26.3 port] GlCompat: backendName='{}' supportsOpenGl={} capsNull={} instancing={} indirect={} dsa={}",
-            RenderSystem.getDevice().getDeviceInfo().backendName(),
-            SUPPORTS_OPENGL,
-            CAPABILITIES == null,
-            SUPPORTS_INSTANCING,
-            SUPPORTS_INDIRECT,
-            SUPPORTS_DSA
-        );
     }
 
     private GlCompat() {
