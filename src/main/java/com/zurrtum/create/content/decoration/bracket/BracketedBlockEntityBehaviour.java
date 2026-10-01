@@ -65,7 +65,7 @@ public class BracketedBlockEntityBehaviour extends BlockEntityBehaviour<SmartBlo
         BlockState removed = bracket;
         Level world = getLevel();
         if (!world.isClientSide()) {
-            world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, getPos(), Block.getId(bracket));
+            world.levelEvent(com.zurrtum.create.foundation.utility.CreateLevelEvents.DESTROY_BLOCK_SOUND_AND_PARTICLES, getPos(), Block.getId(bracket));
         }
         bracket = null;
         reRender = true;

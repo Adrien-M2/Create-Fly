@@ -107,7 +107,7 @@ public class WaterWheelBlockEntity extends GeneratingKineticBlockEntity {
         }
         this.material = material;
         notifyUpdate();
-        level.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, worldPosition, Block.getId(material));
+        level.levelEvent(com.zurrtum.create.foundation.utility.CreateLevelEvents.DESTROY_BLOCK_SOUND_AND_PARTICLES, worldPosition, Block.getId(material));
         return InteractionResult.SUCCESS;
     }
 

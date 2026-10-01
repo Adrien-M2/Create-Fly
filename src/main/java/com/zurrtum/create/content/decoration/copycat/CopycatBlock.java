@@ -72,7 +72,7 @@ public abstract class CopycatBlock extends Block implements IBE<CopycatBlockEnti
                     InventoryCompat.placeItemBack(player.getInventory(), consumedItem);
                 }
                 context.getLevel().levelEvent(
-                    LevelEvent.PARTICLES_DESTROY_BLOCK,
+                    com.zurrtum.create.foundation.utility.CreateLevelEvents.DESTROY_BLOCK_SOUND_AND_PARTICLES,
                     context.getClickedPos(),
                     getId(ufte.getBlockState())
                 );

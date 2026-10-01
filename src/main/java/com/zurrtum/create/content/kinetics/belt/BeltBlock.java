@@ -567,7 +567,7 @@ public class BeltBlock extends HorizontalKineticBlock implements IBE<BeltBlockEn
                 ),
                 UPDATE_ALL
             );
-            world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, currentPos, getId(currentState));
+            world.levelEvent(com.zurrtum.create.foundation.utility.CreateLevelEvents.DESTROY_BLOCK_SOUND_AND_PARTICLES, currentPos, getId(currentState));
         }
     }
 

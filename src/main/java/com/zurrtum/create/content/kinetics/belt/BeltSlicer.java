@@ -108,7 +108,7 @@ public class BeltSlicer {
                 Block.UPDATE_ALL | Block.UPDATE_MOVE_BY_PISTON
             );
             world.removeBlockEntity(pos);
-            world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, pos, Block.getId(state));
+            world.levelEvent(com.zurrtum.create.foundation.utility.CreateLevelEvents.DESTROY_BLOCK_SOUND_AND_PARTICLES, pos, Block.getId(state));
 
             if (!creative && replacedState.is(AllBlocks.BELT) && replacedState.getValue(BeltBlock.PART) == BeltPart.PULLEY) {
                 InventoryCompat.placeItemBack(player.getInventory(), AllItems.SHAFT.getDefaultInstance());

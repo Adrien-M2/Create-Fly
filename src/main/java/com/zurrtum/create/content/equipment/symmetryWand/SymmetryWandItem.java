@@ -329,7 +329,7 @@ public class SymmetryWandItem extends Item {
             BlockState blockstate = world.getBlockState(position);
             if (!blockstate.isAir()) {
                 targets.add(position);
-                world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, position, Block.getId(blockstate));
+                world.levelEvent(com.zurrtum.create.foundation.utility.CreateLevelEvents.DESTROY_BLOCK_SOUND_AND_PARTICLES, position, Block.getId(blockstate));
                 world.setBlock(position, air, Block.UPDATE_ALL);
 
                 if (noCreative) {

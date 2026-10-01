@@ -1207,7 +1207,7 @@ public abstract class Contraption {
                     if (targetPos.getY() == world.getMinY()) {
                         targetPos = targetPos.above();
                     }
-                    world.levelEvent(LevelEvent.PARTICLES_DESTROY_BLOCK, targetPos, Block.getId(state));
+                    world.levelEvent(com.zurrtum.create.foundation.utility.CreateLevelEvents.DESTROY_BLOCK_SOUND_AND_PARTICLES, targetPos, Block.getId(state));
                     if (shouldDropBlocks) {
                         Block.dropResources(state, world, targetPos, null);
                     }
