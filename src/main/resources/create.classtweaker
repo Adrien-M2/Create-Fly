@@ -10,7 +10,6 @@ accessible class net/minecraft/client/resources/model/ModelBakery$ModelBakerImpl
 accessible class net/minecraft/client/resources/model/ModelManager$ResolvedModels
 accessible class net/minecraft/world/clock/ServerClockManager$ServerClockInstance
 accessible class net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior$TrackIteration
-accessible class net/minecraft/world/item/alchemy/PotionBrewing$Mix
 accessible class net/minecraft/world/item/CreativeModeTab$Output
 accessible class net/minecraft/world/item/CreativeModeTab$TabVisibility
 accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier
@@ -61,8 +60,6 @@ accessible field net/minecraft/client/renderer/item/ItemModels ID_MAPPER Lnet/mi
 accessible field net/minecraft/client/renderer/item/ItemStackRenderState cachedModelBoundingBox Lnet/minecraft/world/phys/AABB;
 accessible field net/minecraft/client/renderer/item/ItemStackRenderState displayContext Lnet/minecraft/world/item/ItemDisplayContext;
 accessible field net/minecraft/client/renderer/item/ItemStackRenderState$LayerRenderState foilType Lnet/minecraft/client/renderer/item/ItemStackRenderState$FoilType;
-accessible field net/minecraft/client/renderer/ItemInHandRenderer mainHandItem Lnet/minecraft/world/item/ItemStack;
-accessible field net/minecraft/client/renderer/ItemInHandRenderer offHandItem Lnet/minecraft/world/item/ItemStack;
 accessible field net/minecraft/client/renderer/RenderPipelines BLOCK_SNIPPET Lcom/mojang/renderpearl/api/pipeline/RenderPipeline$Snippet;
 accessible field net/minecraft/client/renderer/RenderPipelines DEBUG_FILLED_SNIPPET Lcom/mojang/renderpearl/api/pipeline/RenderPipeline$Snippet;
 accessible field net/minecraft/client/renderer/RenderPipelines ENTITY_SNIPPET Lcom/mojang/renderpearl/api/pipeline/RenderPipeline$Snippet;
@@ -76,7 +73,6 @@ accessible field net/minecraft/client/renderer/rendertype/RenderSetup useLightma
 accessible field net/minecraft/client/renderer/rendertype/RenderSetup useOverlay Z
 accessible field net/minecraft/client/renderer/rendertype/RenderType state Lnet/minecraft/client/renderer/rendertype/RenderSetup;
 accessible field net/minecraft/client/renderer/SpriteCoordinateExpander delegate Lcom/mojang/blaze3d/vertex/VertexConsumer;
-accessible field net/minecraft/client/renderer/SpriteCoordinateExpander sprite Lnet/minecraft/client/renderer/texture/TextureAtlasSprite;
 accessible field net/minecraft/client/resources/model/cuboid/CuboidModel GSON Lcom/google/gson/Gson;
 accessible field net/minecraft/commands/synchronization/ArgumentTypeInfos BY_CLASS Ljava/util/Map;
 accessible field net/minecraft/core/component/DataComponentPatch map Lit/unimi/dsi/fastutil/objects/Reference2ObjectMap;
@@ -97,16 +93,11 @@ accessible field net/minecraft/world/clock/ServerClockManager$ServerClockInstanc
 accessible field net/minecraft/world/clock/ServerClockManager$ServerClockInstance totalTicks J
 accessible field net/minecraft/world/entity/Entity DATA_POSE Lnet/minecraft/network/syncher/EntityDataAccessor;
 accessible field net/minecraft/world/entity/Entity removalReason Lnet/minecraft/world/entity/Entity$RemovalReason;
-accessible field net/minecraft/world/entity/InterpolationHandler interpolationData Lnet/minecraft/world/entity/InterpolationHandler$InterpolationData;
-accessible field net/minecraft/world/entity/InterpolationHandler$InterpolationData steps I
 accessible field net/minecraft/world/entity/item/ItemEntity age I
 accessible field net/minecraft/world/entity/LivingEntity lastEquipmentItems Ljava/util/Map;
 accessible field net/minecraft/world/entity/Mob targetSelector Lnet/minecraft/world/entity/ai/goal/GoalSelector;
 accessible field net/minecraft/world/entity/vehicle/minecart/MinecartFurnace fuel I
 accessible field net/minecraft/world/entity/vehicle/minecart/NewMinecartBehavior$TrackIteration firstIteration Z
-accessible field net/minecraft/world/item/alchemy/PotionBrewing containerMixes Ljava/util/List;
-accessible field net/minecraft/world/item/alchemy/PotionBrewing containers Ljava/util/List;
-accessible field net/minecraft/world/item/alchemy/PotionBrewing potionMixes Ljava/util/List;
 accessible field net/minecraft/world/item/BucketItem content Lnet/minecraft/world/level/material/Fluid;
 accessible field net/minecraft/world/item/context/BlockPlaceContext relativePos Lnet/minecraft/core/BlockPos;
 accessible field net/minecraft/world/item/crafting/Ingredient values Lnet/minecraft/core/HolderSet;
@@ -186,8 +177,6 @@ accessible method net/minecraft/world/entity/item/FallingBlockEntity <init> (Lne
 accessible method net/minecraft/world/entity/item/ItemEntity addAdditionalSaveData (Lnet/minecraft/world/level/storage/ValueOutput;)V
 accessible method net/minecraft/world/entity/LivingEntity setLastHurtByPlayer (Lnet/minecraft/world/entity/EntityReference;I)V
 accessible method net/minecraft/world/entity/vehicle/minecart/AbstractMinecart getMaxSpeed (Lnet/minecraft/server/level/ServerLevel;)D
-accessible method net/minecraft/world/item/alchemy/PotionBrewing isContainer (Lnet/minecraft/world/item/ItemStack;)Z
-accessible method net/minecraft/world/item/AxeItem getStripped (Lnet/minecraft/world/level/block/state/BlockState;)Ljava/util/Optional;
 accessible method net/minecraft/world/item/component/ItemContainerContents <init> (Ljava/util/List;)V
 accessible method net/minecraft/world/item/context/UseOnContext <init> (Lnet/minecraft/world/level/Level;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/phys/BlockHitResult;)V
 accessible method net/minecraft/world/item/crafting/CraftingInput <init> (IILjava/util/List;)V
