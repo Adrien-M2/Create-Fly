@@ -38,7 +38,12 @@ public final class MaterialTextures {
         }
         var textureManager = Minecraft.getInstance().getTextureManager();
         for (Identifier id : PENDING) {
-            textureManager.getTexture(id);
+            var loaded = textureManager.getTexture(id);
+            com.zurrtum.create.client.flywheel.backend.FlwBackend.LOGGER.info(
+                "[Create 26.3 port] Material texture '{}' -> {}",
+                id,
+                loaded.getClass().getName()
+            );
             READY.add(id);
         }
         PENDING.clear();
