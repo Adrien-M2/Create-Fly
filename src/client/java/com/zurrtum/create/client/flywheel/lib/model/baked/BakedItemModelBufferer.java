@@ -39,6 +39,10 @@ public class BakedItemModelBufferer {
         RenderTypes.entitySolidGlint(net.minecraft.client.renderer.texture.TextureAtlas.LOCATION_BLOCKS)
     );
 
+    public static boolean isPorted() {
+        return false;
+    }
+
     public static void bufferItemStack(
         ItemStack stack,
         BlockAndTintGetter level,
