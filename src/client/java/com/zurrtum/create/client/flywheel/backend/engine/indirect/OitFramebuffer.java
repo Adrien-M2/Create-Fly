@@ -175,7 +175,7 @@ public class OitFramebuffer {
      * Composite the accumulated luminance onto the main framebuffer.
      */
     public void composite() {
-        GlDevice device = (GlDevice) RenderSystem.getDevice();
+        GlDevice device = com.zurrtum.create.client.flywheel.backend.gl.FlwGlDevice.get();
         FrameBufferCache frameBufferCache = device.frameBufferCache();
         DirectStateAccess access = device.directStateAccess();
         Minecraft mc = Minecraft.getInstance();

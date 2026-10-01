@@ -28,6 +28,7 @@
     "EntityTypeMixin",
     "FluidStateModelSetMixin",
     "FogRendererMixin",
+    "FrontendGpuDeviceAccessor",
     "GameRendererMixin",
     "GlStateManagerMixin",
     "GuiGraphicsExtractorMixin",

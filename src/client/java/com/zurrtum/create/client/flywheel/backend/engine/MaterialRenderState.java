@@ -182,7 +182,7 @@ public final class MaterialRenderState {
 
     public static void setupFrameBuffer() {
         RenderTarget target = Minecraft.getInstance().gameRenderer.mainRenderTarget();
-        GlDevice device = (GlDevice) RenderSystem.getDevice();
+        GlDevice device = com.zurrtum.create.client.flywheel.backend.gl.FlwGlDevice.get();
         int fbo = device.frameBufferCache().getFbo(
             device.directStateAccess(),
             Collections.singletonList((GlTexture) target.getColorTexture()),
