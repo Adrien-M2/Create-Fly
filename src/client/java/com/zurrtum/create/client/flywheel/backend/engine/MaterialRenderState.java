@@ -188,7 +188,10 @@ public final class MaterialRenderState {
         resetWriteMask();
     }
 
+    private static int previousFrameBuffer = 0;
+
     public static void setupFrameBuffer() {
+        previousFrameBuffer = GL11.glGetInteger(org.lwjgl.opengl.GL30C.GL_DRAW_FRAMEBUFFER_BINDING);
         RenderTarget target = Minecraft.getInstance().gameRenderer.mainRenderTarget();
         GlDevice device = com.zurrtum.create.client.flywheel.backend.gl.FlwGlDevice.get();
         int fbo = device.frameBufferCache().getFbo(
@@ -200,7 +203,7 @@ public final class MaterialRenderState {
     }
 
     private static void resetFrameBuffer() {
-        GlStateManager._glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        GlStateManager._glBindFramebuffer(GL_FRAMEBUFFER, previousFrameBuffer);
     }
 
     private static void resetTexture() {
