@@ -43,6 +43,10 @@ public final class LevelUniforms extends UniformWriter {
         SkyRenderState skyRenderState = levelRenderState.skyRenderState;
 
         org.joml.Vector3fc skyColor = skyRenderState.skyColor;
+        if (skyColor == null) {
+            // 26.3: skyColor is only filled when the sky is extracted; fall back to black until the real source is wired.
+            skyColor = new org.joml.Vector3f();
+        }
         int cloudColor = levelRenderState.cloudColor;
         ptr = writeVec4(ptr, skyColor.x(), skyColor.y(), skyColor.z(), 1.0f);
         ptr = writeVec4(ptr, ARGB.redFloat(cloudColor), ARGB.greenFloat(cloudColor), ARGB.blueFloat(cloudColor), 1.0f);
