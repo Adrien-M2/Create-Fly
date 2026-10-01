@@ -34,21 +34,29 @@ public final class MaterialRenderState {
     private MaterialRenderState() {
     }
 
-    public static void setup(Material material) {
+    public static boolean setup(Material material) {
+        if (!MaterialTextures.isReady(material.texture())) {
+            return false;
+        }
         setupTexture(material);
         setupBackfaceCulling(material.backfaceCulling());
         setupPolygonOffset(material.polygonOffset());
         setupDepthTest(material.depthTest());
         setupTransparency(material.transparency());
         setupWriteMask(material.writeMask());
+        return true;
     }
 
-    public static void setupOit(Material material) {
+    public static boolean setupOit(Material material) {
+        if (!MaterialTextures.isReady(material.texture())) {
+            return false;
+        }
         setupTexture(material);
         setupBackfaceCulling(material.backfaceCulling());
         setupPolygonOffset(material.polygonOffset());
         setupDepthTest(material.depthTest());
         GlStateManager._colorMask(material.writeMask().color());
+        return true;
     }
 
     private static void setupTexture(Material material) {
