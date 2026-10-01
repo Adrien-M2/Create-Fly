@@ -33,9 +33,6 @@ import java.util.stream.Stream;
 
 @Mixin(RecipeManager.class)
 public class RecipeManagerMixin {
-    // TODO(26.3): RecipeManager.prepare() n'existe plus (recettes chargees via le registre Registries.RECIPE).
-    // Injection de SequencedAssemblyRecipe.GENERATE_RECIPES desactivee en attendant un point d'accroche sur RecipeMap.create.
-
     @Shadow
     @Mutable
     @Final

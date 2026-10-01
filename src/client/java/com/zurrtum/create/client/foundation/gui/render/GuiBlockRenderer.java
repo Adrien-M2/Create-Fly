@@ -34,8 +34,6 @@ public abstract class GuiBlockRenderer<T extends PictureInPictureRenderState> ex
             blitTexture(renderState, guiRenderState);
         } else {
             prepareTexturesAndProjection(needsAResize, width, height);
-            // TODO 26.3: RenderSystem.outputColorTextureOverride = textureView;
-            // TODO 26.3: RenderSystem.outputDepthTextureOverride = depthTextureView;
             Matrix4fStack modelViewStack = RenderSystem.getModelViewStack();
             modelViewStack.pushMatrix();
             PoseStack poseStack = new PoseStack();
@@ -45,8 +43,6 @@ public abstract class GuiBlockRenderer<T extends PictureInPictureRenderState> ex
             renderToTexture(renderState, poseStack, submitNodeStorage);
             renderAllFeatures(featureRenderDispatcher);
             modelViewStack.popMatrix();
-            // TODO 26.3: RenderSystem.outputColorTextureOverride = null;
-            // TODO 26.3: RenderSystem.outputDepthTextureOverride = null;
             blitTexture(renderState, guiRenderState);
         }
     }

@@ -12,10 +12,7 @@ import net.minecraft.world.item.ItemStack;
  * paramètre {@code Prediction}. Tous les appels de Create passent par ici pour n'avoir qu'un seul
  * endroit à corriger.
  * <p>
- * TODO (à faire une seule fois) : {@code Prediction} n'est pas importé ci-dessous, car son package
- * n'a pas pu être vérifié. Dans IntelliJ, placer le curseur sur {@code Prediction} puis Alt+Entrée
- * ("Import class"). Les autres portages 26.3 utilisent {@code Prediction.SERVER_ONLY} pour du code
- * côté serveur ; tous les appelants de Create sont côté serveur.
+ * Tous les appelants de Create sont côté serveur, d'où {@code Prediction.SERVER_ONLY}.
  */
 public final class InventoryCompat {
     private InventoryCompat() {
