@@ -46,8 +46,6 @@ public final class GlCompat {
     public static final boolean SUPPORTS_INSTANCING = SUPPORTS_OPENGL && isInstancingSupported();
     public static final boolean SUPPORTS_INDIRECT = SUPPORTS_OPENGL && isIndirectSupported();
 
-    }
-
     private GlCompat() {
     }
 
