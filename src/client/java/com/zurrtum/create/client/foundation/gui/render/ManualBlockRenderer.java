@@ -56,7 +56,7 @@ public class ManualBlockRenderer extends GuiBlockRenderer<ManualBlockRenderState
         matrices.scale(1, -1, 1);
         CachedBuffers.block(block.state()).submit(matrices, submitNodeStorage);
         matrices.popPose();
-        renderAllFeatures(featureRenderDispatcher);
+        renderAllFeatures(texture, featureRenderDispatcher);
         texture.clear();
         state.addBlitToCurrentLayer(new BlitRenderState(
             RenderPipelines.GUI_TEXTURED_PREMULTIPLIED_ALPHA,

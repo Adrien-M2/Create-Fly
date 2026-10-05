@@ -48,11 +48,23 @@ public abstract class GuiBlockRenderer<T extends PictureInPictureRenderState> ex
     }
 
     protected void renderAllFeatures(FeatureRenderDispatcher featureRenderDispatcher) {
+        renderAllFeatures(textureView, depthTextureView, featureRenderDispatcher);
+    }
+
+    protected void renderAllFeatures(com.zurrtum.create.client.catnip.gui.render.GpuTexture own, FeatureRenderDispatcher featureRenderDispatcher) {
+        renderAllFeatures(own.textureView(), own.depthTextureView(), featureRenderDispatcher);
+    }
+
+    private void renderAllFeatures(
+        com.mojang.renderpearl.api.textures.GpuTextureView color,
+        com.mojang.renderpearl.api.textures.GpuTextureView depth,
+        FeatureRenderDispatcher featureRenderDispatcher
+    ) {
         Minecraft mc = Minecraft.getInstance();
         Lighting lighting = mc.gameRenderer.lighting();
         lighting.updateBuffer(Lighting.Entry.LEVEL, getLight0(), getLight1());
         lighting.setupFor(Lighting.Entry.LEVEL);
-        com.zurrtum.create.client.catnip.gui.render.GpuTexture.renderFeatures(textureView, depthTextureView, featureRenderDispatcher, submitNodeStorage);
+        com.zurrtum.create.client.catnip.gui.render.GpuTexture.renderFeatures(color, depth, featureRenderDispatcher, submitNodeStorage);
         if (mc.level != null) {
             lighting.updateLevel(mc.level.dimensionType().cardinalLightType());
         } else {

@@ -141,7 +141,7 @@ public class SpoutRenderer extends GuiBlockRenderer<SpoutRenderState> {
             matrices.popPose();
         }
 
-        renderAllFeatures(featureRenderDispatcher);
+        renderAllFeatures(texture, featureRenderDispatcher);
         texture.clear();
         state.addBlitToCurrentLayer(new BlitRenderState(
             RenderPipelines.GUI_TEXTURED_PREMULTIPLIED_ALPHA,
