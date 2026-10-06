@@ -831,12 +831,18 @@ public abstract class AbstractContraptionEntity extends Entity {
     }
 
     /**
-     * Tooltip mods such as Jade skip entities that are invisible to the player, so that looking at a block
-     * inside or behind the contraption's bounding box does not show the contraption itself.
+     * Set by the client: true when the player is aiming at one of this contraption's blocks.
+     */
+    public static java.util.function.BiPredicate<AbstractContraptionEntity, Player> aimedAtBlocks = (entity, player) -> false;
+
+    /**
+     * Tooltip mods such as Jade skip entities that are invisible to the player. The contraption is only reported as
+     * visible when one of its own blocks is aimed at, so blocks in or behind its bounding box (plants for instance)
+     * are targeted normally.
      */
     @Override
-    public boolean isInvisibleTo(net.minecraft.world.entity.player.Player player) {
-        return true;
+    public boolean isInvisibleTo(Player player) {
+        return !level().isClientSide() || !aimedAtBlocks.test(this, player);
     }
 
     @Override
