@@ -830,6 +830,15 @@ public abstract class AbstractContraptionEntity extends Entity {
         return false;
     }
 
+    /**
+     * Tooltip mods such as Jade skip entities that are invisible to the player, so that looking at a block
+     * inside or behind the contraption's bounding box does not show the contraption itself.
+     */
+    @Override
+    public boolean isInvisibleTo(net.minecraft.world.entity.player.Player player) {
+        return true;
+    }
+
     @Override
     public boolean hurtServer(ServerLevel world, DamageSource source, float amount) {
         return false;
