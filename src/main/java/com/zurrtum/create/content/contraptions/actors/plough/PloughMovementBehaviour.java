@@ -34,6 +34,14 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import java.util.Objects;
 
 public class PloughMovementBehaviour extends BlockBreakingMovementBehaviour {
+    private static final com.mojang.authlib.GameProfile PLOUGH_PROFILE = new com.mojang.authlib.GameProfile(
+        java.util.UUID.fromString("7c1b5a0e-3f43-4e0b-9a52-6f1f7d2d9b11"),
+        "Plough"
+    );
+    private static final com.zurrtum.create.catnip.data.WorldAttached<com.zurrtum.create.infrastructure.player.FakePlayerEntity> PLOUGH_PLAYERS = new com.zurrtum.create.catnip.data.WorldAttached<>(
+        w -> new com.zurrtum.create.infrastructure.player.FakePlayerEntity((ServerLevel) w, PLOUGH_PROFILE)
+    );
+
 
     @Override
     public boolean isActive(MovementContext context) {
@@ -68,9 +76,10 @@ public class PloughMovementBehaviour extends BlockBreakingMovementBehaviour {
             return;
         }
 
+        // 26.3: block transformers dereference the player, so a null player now crashes
         UseOnContext ctx = new UseOnContext(
             world,
-            null,
+            PLOUGH_PLAYERS.get(world),
             InteractionHand.MAIN_HAND,
             Items.DIAMOND_HOE.getDefaultInstance(),
             ray
