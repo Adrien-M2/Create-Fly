@@ -1025,7 +1025,7 @@ public class AllHandle {
                     }
 
                     CompoundTag data = BlockHelper.prepareBlockEntityData(world, state, blockEntity);
-                    BlockHelper.placeSchematicBlock(world, state, pos, null, data);
+                    BlockHelper.placeSchematicBlock(world, state, pos, null, data, true);
                 }, (pos, entity) -> {
                     world.addFreshEntity(entity);
                 }

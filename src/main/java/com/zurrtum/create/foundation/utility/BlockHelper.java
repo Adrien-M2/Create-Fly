@@ -488,6 +488,20 @@ public class BlockHelper {
         @Nullable ItemStack stack,
         @Nullable CompoundTag data
     ) {
+        placeSchematicBlock(world, state, target, stack, data, false);
+    }
+
+    /**
+     * @param keepWaterlogged true in creative printing, where the schematic's water is placed too
+     */
+    public static void placeSchematicBlock(
+        Level world,
+        BlockState state,
+        BlockPos target,
+        @Nullable ItemStack stack,
+        @Nullable CompoundTag data,
+        boolean keepWaterlogged
+    ) {
         Block block = state.getBlock();
         BlockEntity existingBlockEntity = world.getBlockEntity(target);
         boolean alreadyPlaced = false;
@@ -503,7 +517,7 @@ public class BlockHelper {
         if (state.hasProperty(BlockStateProperties.EXTENDED)) {
             state = state.setValue(BlockStateProperties.EXTENDED, Boolean.FALSE);
         }
-        if (state.hasProperty(BlockStateProperties.WATERLOGGED)) {
+        if (!keepWaterlogged && state.hasProperty(BlockStateProperties.WATERLOGGED)) {
             state = state.setValue(BlockStateProperties.WATERLOGGED, Boolean.FALSE);
         }
 
