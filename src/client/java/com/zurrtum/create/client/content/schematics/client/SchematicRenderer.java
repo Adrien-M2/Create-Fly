@@ -119,9 +119,9 @@ public class SchematicRenderer {
         )) {
             BlockPos pos = mutableBlockPos.setWithOffset(localPos, anchor);
             BlockState state = schematic.getBlockState(pos);
-            // water/lava (and waterlogged blocks) in the preview, like Ponder scenes draw them
+            // waterlogged blocks only: the schematicannon never places plain water/lava, so don't preview them
             FluidState fluidState = state.getFluidState();
-            if (!fluidState.isEmpty()) {
+            if (!fluidState.isEmpty() && !(state.getBlock() instanceof net.minecraft.world.level.block.LiquidBlock)) {
                 sbbBuilder.prepareForFluid(pos);
                 fluidRenderer.tesselate(schematic, pos, sbbBuilder, state, fluidState);
             }
